@@ -1,0 +1,181 @@
+/*
+ * Main theme
+*/
+.navbar {
+  background-color: rgba(0, 0, 0, 0.932);
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+
+  .row {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.dropdown {
+  &:hover {
+    >.dropdown-menu {
+      display: block;
+    }
+  }
+}
+
+.megamenu {
+  position: static;
+
+  .dropdown-menu {
+    border: none;
+    width: 100%;
+  }
+}
+
+body {
+  background-size: cover;
+  background-image: url("../imagenes/wallpaperperfil.avif");
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@font-face {
+  font-family: "1up";
+  src: url("../fuentes/1up.ttf");
+}
+
+#top {
+  font-family: '1up';
+}
+
+h5 {
+  font-size: 20px;
+  font-family: '1up';
+  color: rgb(247, 0, 255);
+}
+
+h1 {
+  font-family: '1up';
+  font-size: 35px;
+}
+
+button {
+  margin-top: 5px;
+  font-size: 20px;
+  color: #000000;
+  border: black solid;
+  text-align: center;
+  background-color: rgb(43, 142, 223);
+  cursor: pointer;
+  font-family: '1up';
+  border-radius: 10%;
+}
+
+/* Estilos para la imagen predefinida */
+.imgp {
+  justify-content: center;
+  text-align: center;
+  max-width: 200px;
+  max-height: 200px;
+  cursor: pointer;
+}
+
+/* Estilos para ocultar el input del archivo */
+.d-none {
+  display: none !important;
+}
+
+h1 {
+  text-align: center;
+  color: rgb(43, 142, 223);
+  font-weight: bold;
+}
+
+.fa-regular {
+  width: 100px;
+  height: 100px;
+
+}
+
+.fotoperfil {
+  width: 250px;
+  height: 250px;
+  border-radius: 40%;
+  border: 3px solid fuchsia;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: fuchsia;
+}
+
+.logo {
+  width: 500px;
+  height: 500px;
+}
+
+.logonavbar {
+  width: 200px;
+  height: 200px;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.536);
+  position: sticky;
+}
+
+.navbar-toggler {
+  background-color: rgba(43, 142, 223, 0.539);
+}
+
+.margtop {
+  margin-top: 150px;
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.606);
+}
+
+h3 {
+  font-size: 20px;
+  font-family: '1up';
+  color: rgb(247, 0, 255);
+}
+
+h4 {
+  font-size: 20px;
+  color: rgb(247, 0, 255);
+  text-align: center;
+}
+
+.textofooter {
+  color: white;
+  text-decoration: none;
+
+}
+
+.imgfooter {
+  width: 200px;
+  height: 200px;
+}
+
+#results {
+  color: white;
+  border: 3px solid fuchsia;
+  text-decoration: none;
+  border-radius: 20px;
+  text-align: center;
+  overflow: scroll;
+  scrollbar-width: none;
+  height: 650px;
+  /* width: 575px; */
+}
+
+#imgg {
+  border-radius: 30%;
+}

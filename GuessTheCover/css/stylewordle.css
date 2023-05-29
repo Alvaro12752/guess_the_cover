@@ -1,0 +1,113 @@
+
+ /*
+ * Main theme
+*/
+.navbar {
+  background-color: rgba(0, 0, 0, 0.932);
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  .row {
+    margin: 0;
+    padding: 0;
+  }
+}
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+.dropdown {
+  &:hover {
+    > .dropdown-menu {
+      display: block;
+    }
+  }
+}
+.megamenu {
+  position: static;
+  .dropdown-menu {
+  border: none;
+  width: 100%;
+  }
+}
+#wordle {
+    
+    color: rgb(43, 142, 223);
+    font-size: 30px;
+    border: 3px solid fuchsia;
+    text-decoration: none;
+    border-radius: 20px;
+    text-align: center;
+
+  }
+  .letter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid black;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 36px;
+  }
+  
+  .letter-text {
+    font-size: 36px;
+  }
+  
+  .guess-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .guess-button{
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    background-color:  rgb(43, 142, 223);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10%;
+  }
+  h5 {
+    font-size: 20px;
+    font-family: '1up';
+    color: rgb(247, 0, 255);
+  }
+  .guess-button:hover {
+   background-color: #00ffbf;
+  }
+  button {
+    margin-top: 5px;
+    font-size: 20px;
+    color: #030303;
+    border: black solid;
+    text-align: center;
+    background-color: rgb(43, 142, 223);
+    cursor: pointer;
+    font-family: '1up';
+    border-radius: 10%;
+  }
+
+  .gameover{
+    margin: 5px;
+  }
+  .wordle > p {
+    color: red;
+  }
+  

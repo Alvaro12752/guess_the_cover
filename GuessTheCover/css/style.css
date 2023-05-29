@@ -1,0 +1,426 @@
+
+ /*
+ * Main theme
+*/
+.navbar {
+  background-color: rgba(0, 0, 0, 0.932);
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  .row {
+    margin: 0;
+    padding: 0;
+  }
+}
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+.dropdown {
+  &:hover {
+    > .dropdown-menu {
+      display: block;
+    }
+  }
+}
+.megamenu {
+  position: static;
+  .dropdown-menu {
+  border: none;
+  width: 100%;
+  }
+}
+
+ body {
+   background-size: cover;
+   background-image: url("../imagenes/wallpaper3.jpg");
+   background-position: -300px;
+   background-position: center;
+   background-attachment: fixed;
+ }
+
+ @font-face {
+   font-family: "1up";
+   src: url("../fuentes/1up.ttf");
+ }
+
+ #timer {
+   font-family: '1up';
+   color: rgb(43, 142, 223);
+   font-size: 20px;
+   justify-content: center;
+ }
+
+ #tiempo {
+   font-size: 20px;
+   color: rgb(43, 142, 223);
+   justify-content: center;
+   align-items: center;
+ }
+
+ a {
+   color: white;
+   text-decoration: none;
+ }
+
+ .btn {
+   border: 1px fuchsia solid;
+   justify-content: center;
+ }
+
+ a:hover {
+   text-decoration: none;
+   color: fuchsia;
+ }
+
+ .logo {
+   width: 500px;
+   height: 500px;
+ }
+ .logo-imagen {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px; /* Ajusta el margen derecho según tus necesidades */
+}
+ .logonavbar {
+   width: 165px;
+   height: 165px;
+ }
+ .bg-navbar {
+  background-color:  rgba(0, 0, 0, 0.536) !important;
+  height: 150px;
+}
+ .navbar {
+  width: 100%;
+  background-color:  rgba(0, 0, 0, 0.536) !important;
+  position: sticky;
+ }
+
+ .navbar-toggler {
+   background-color: rgba(43, 142, 223, 0.539);
+ }
+
+ .margtop {
+   margin-top: 150px;
+ }
+
+ h1 {
+   font-size: 60px;
+   font-family: '1up';
+
+   color: rgb(247, 0, 255);
+ }
+
+ .vida {
+   margin-bottom: 400px;
+   width: 50px;
+   height: 50px;
+ }
+
+ #gameover {
+   display: none;
+   text-align: center;
+   margin-top: 20px;
+   font-size: 24px;
+   font-family: '1up';
+   color: #2b8edf;
+   ;
+ }
+
+ #juegodiv {
+   margin-top: 50px;
+ }
+
+ footer {
+   background-color: rgba(0, 0, 0, 0.606);
+ }
+ h5 {
+  font-size: 20px;
+  font-family: '1up';
+  color: rgb(247, 0, 255);
+}
+ h3 {
+   font-size: 20px;
+   font-family: '1up';
+   color: rgb(247, 0, 255);
+ }
+
+ #errorr {
+   color: red;
+ }
+
+ #textocomprobacion h4 {
+   color: rgb(3, 255, 3);
+   font-family: '1up';
+ }
+
+ #results img {
+   object-fit: cover;
+   width: 400px;
+   /* height: 480px; */
+ }
+
+ #results {
+  color: white;
+  border: 3px solid #ff00ff;
+  text-decoration: none;
+  border-radius: 20px;
+  text-align: center;
+  overflow: scroll;
+  scrollbar-width: none;
+  height: 600px;
+  /* width: 575px; */
+}
+ /* .dropdown-menu {
+  background-color: red;
+} */
+ #juego {
+   height: 600px;
+   width: 500px;
+ }
+
+ #juego img {
+   justify-content: center;
+   align-items: center;
+   height: 600px;
+   width: 479px;
+   border-radius: 3%;
+   /* filter: blur(6px); */
+ }
+
+ #pelicula img {
+   justify-content: center;
+   align-items: center;
+   height: 600px;
+   width: 479px;
+   border-radius: 3%;
+   /* filter: blur(6px); */
+ }
+
+ .textofooter {
+   color: white;
+   text-decoration: none;
+
+ }
+
+ .imgfooter {
+   width: 200px;
+   height: 200px;
+ }
+
+ #loginregistro {
+   border: 5px solid rgb(7, 7, 7);
+   border-radius: 5%;
+   text-align: center;
+   width: 500px;
+   left: 0;
+   color: rgb(11, 1, 10);
+   background-color: rgba(43, 142, 223, 0.539);
+   font-family: '1up';
+
+ }
+
+ #reload-button {
+   font-size: 20px;
+   color: #030303;
+   border: black solid;
+   text-align: center;
+   background-color: rgb(43, 142, 223);
+   cursor: pointer;
+   font-family: '1up';
+ }
+
+ .inputGroup {
+   margin: 1em 0 1em 0;
+   position: relative;
+ }
+
+ .inputGroup input {
+   font-size: 100%;
+   padding: 0.8em;
+   outline: none;
+   border: 2px solid rgb(0, 5, 2);
+   background-color: transparent;
+   border-radius: 20px;
+   width: 100%;
+ } 
+
+
+
+ /* .inputGroup :is(input:focus, input:valid)~label {
+   transform: translateY(-50%) scale(.9);
+   margin: 0em;
+   margin-left: 1.3em;
+   padding: 0.4em;
+
+ }
+
+ .inputGroup :is(input:focus, input:valid) {
+   border-color: rgb(4, 248, 98);
+ }
+
+ .inputname>.inputGroup {
+   max-width: 190px;
+ } */
+
+ .botonlogin {
+   width: 150px;
+   background-color: rgb(182, 94, 255);
+   border-radius: 5px;
+ }
+ .botonlogin {
+  transition: all 0.2s ease-in-out;
+}
+
+.botonlogin:hover {
+  transform: scale(1.1);
+}
+
+ .acierto {
+   font-family: '1up';
+   color: rgb(5, 255, 5);
+ }
+
+ .error {
+   font-family: '1up';
+   color: rgb(255, 5, 5);
+ }
+
+ #search-form {
+   height: 32px;
+   border: 1px solid rgb(43, 142, 223);
+   border-radius: 5px;
+   overflow: hidden;
+   width: 300px;
+   scrollbar-width: none;
+
+ }
+#logodrop{
+  height: 100px;
+  width: 100px;
+}
+ .no-outline:focus {
+   outline: none;
+ }
+
+ #search {
+   font-size: 14px;
+   color: #ffffff;
+   border-width: 0;
+   width: 150%;
+   background-color: transparent;
+   scrollbar-width: none;
+
+ }
+ #botonbuscar{
+  display: none;
+ }
+
+ /* #botonreload {
+   margin-bottom: -200px
+ } */
+ main {
+  overflow: hidden;
+}
+
+ .botonbuscar {
+   position: absolute;
+   top: 0;
+   right: 0;
+   height: 34px;
+   width: 80px;
+   font-size: 14px;
+   color: #030303;
+   text-align: center;
+   line-height: 4px;
+   border-width: 0;
+   cursor: pointer;
+   font-family: '1up';
+ }
+
+ .dropdown-menu {
+   /* background-color: rgba(0, 0, 0, 0.606); */
+   font-family: '1up';
+ }
+
+ h2 {
+   font-family: '1up';
+   color: #2b8edf;
+ }
+
+ .dropdown-item,
+ h4 {
+   color: rgb(247, 0, 255);
+
+ }
+
+ .tutorial {
+   margin-left: 100px;
+   margin-right: 100px;
+ }
+
+ .tutorial h3 {
+   padding: 5px;
+   justify-content: center;
+   border: 2px solid rgb(247, 0, 255);
+   border-radius: 20px;
+   font-size: 25px;
+   color: rgb(43, 142, 223);
+   font-family: 'Courier New', Courier, monospace;
+ }
+
+ .dropdown-item:hover {
+   background-color: #0000009b;
+   color: rgb(247, 0, 255);
+ }
+
+
+ /* .container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  grid-gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .row {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.col {
+  padding: 15px;
+}
+
+@media (max-width: 767px) {
+  .textocomprobacion {
+    order: -1;
+  }
+} */
+.pincorrecto{
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+}
+.pcorrecto{
+  color: rgb(0, 255, 38);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+}

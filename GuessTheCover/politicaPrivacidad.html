@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styleprivacidad.css">
+    <link rel="shortcut icon" href="logo/gtc1.png" type="image/x-icon">
+    <title>Guess The Game</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg  py-3 fixed-top">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo/gtc1.png" class="d-inline-block align-top logonavbar" alt="">
+            </a>
+            <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Megamenu-->
+                    <a class="nav-link" href="perfil.php">
+                        <h3>Perfil</h3>
+                    </a>
+                    <a class="nav-link" href="ranking.php">
+                        <h3>Ranking</h3>
+                    </a>
+                    <a class="nav-link mr-5" href="registro.php">
+                        <h3>Registrarse</h3>
+                    </a>
+                    <li class="nav-item dropdown mr-2 megamenu"><a id="megamenu" href="" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"
+                            class="nav-link dropdown-toggle font-weight-bold text-uppercase">
+                            <h5>Juegos</h5>
+                        </a>
+                        <div aria-labelledby="megamenu" class="dropdown-menu border-0 p-0 m-0">
+                            <div class="container-fluid" style="  background-color: rgba(0, 0, 0, 0.932)">
+                                <div class="row rounded-0 m-0 shadow-sm">
+                                    <div class="col-12">
+                                        <div class="p-4">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-lg-3 mr-5 mb-4">
+                                                    <h5 class="text-uppercase">Guess The Cover</h5>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="AdivinaPelicula.php"
+                                                                class="nav-link text-small pb-0">Películas</a></li>
+                                                        <li class="nav-item"><a href="AdivinaJuegoFacil.php"
+                                                                class="nav-link text-small pb-0 ">Videjuegos</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-6 col-lg-3 mb-4">
+                                                    <h5 class="font-weight-bold text-uppercase">Wordles</h5>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item mt-5"><a href="wordlepeliculas.php"
+                                                                class="nav-link pb-0 ">Películas</a></li>
+                                                        <li class="nav-item"><a href="wordlejuegos.php"
+                                                                class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown megamenu"><a id="megamenu" href="" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"
+                            class="nav-link dropdown-toggle font-weight-bold text-uppercase">
+                            <h5>Bibliotecas</h5>
+                        </a>
+                        <div aria-labelledby="megamenu" class="dropdown-menu border-0 p-0 m-0">
+                            <div class="container-fluid" style="  background-color: rgba(0, 0, 0, 0.932)">
+                                <div class="row rounded-0 m-0 shadow-sm">
+                                    <div class="col-12">
+                                        <div class="p-4">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-lg-3 mr-5 mb-4">
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="bibliotecaPeliculas.html"
+                                                                class="nav-link text-small pb-0">Películas</a></li>
+                                                        <li class="nav-item"><a href="bibliotecaJuegos.html"
+                                                                class="nav-link text-small pb-0 ">Videjuegos</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <button type="button" style="background-color: transparent;" data-toggle="collapse"
+                data-target="#navbarContent" aria-controls="navbars" aria-expanded="false"
+                aria-label="Toggle navigation" class="navbar-toggler order-md-3">
+                <img src="imagenes/icons8-menú-48.png" alt="Descripción de la imagen">
+            </button>
+
+        </nav>
+    </header>
+
+
+
+    <main>
+        <div class="container my-5">
+            <div class="container-fluid p-5">
+                <h1 class="mb-4 text-center fw-bold">Política de privacidad de GuessTheCover</h1>
+                <h2 class="fw-bold">Política de Privacidad</h2>
+                <p>Nuestra Política de privacidad se actualizó por última vez el <i>01/02/2023</i>.</p>
+                <p>Esta Política de privacidad describe Nuestras políticas y procedimientos sobre la recopilación, el
+                    uso y la divulgación de Su
+                    información cuando usa el Servicio y le informa sobre sus derechos de privacidad y cómo la ley lo
+                    protege.
+                    Usamos sus datos personales para proporcionar y mejorar el Servicio. Al utilizar el Servicio, usted
+                    acepta la recopilación
+                    y el uso de la información de acuerdo con esta Política de Privacidad.</p>
+                <h2 class="fw-bold mb-3">Interpretación y Definiciones</h2>
+                <h3 class="fw-bold">Interpretación</h3>
+                <p>Las palabras cuya letra inicial está en mayúscula tienen significados definidos bajo las siguientes
+                    condiciones. El
+                    Las siguientes definiciones tendrán el mismo significado independientemente de que aparezcan en
+                    singular o en plural.
+                </p>
+                <h3 class="fw-bold">Definiciones</h3>
+                <p>A los efectos de esta Política de privacidad:</p>
+                <ul>
+                    <li><b>"Cuenta"</b> significa una cuenta única creada para que Usted acceda a nuestro Servicio o
+                        partes de nuestro Servicio.</li>
+                    <li><b>"Aplicación"</b> hace referencia al programa de software proporcionado por la Empresa
+                        utilizado por Usted en cualquier
+                        dispositivo,
+                        llamado <i>Conocer y saludar</i>.</li>
+                    <li><b>"Compañía"</b> (referida como "la Compañía", "Nosotros", "Nos" o "Nuestro" en este Acuerdo)
+                        se refiere a
+                        [GuessTheCover]</li>
+                    <li><b>"País"</b> se refiere a <i>España</i>.</li>
+                    <li><b>"Cookies"</b> son pequeños archivos que se colocan en su computadora, dispositivo móvil o
+                        cualquier otro dispositivo por un
+                        sitio web,
+                        que contiene los detalles de Su historial de navegación en ese sitio web entre sus muchos usos.
+                    </li>
+                    <li><b>"Dispositivo"</b> hace referencia a cualquier dispositivo que pueda acceder al Servicio, como
+                        una computadora, un teléfono celular o un dispositivo digital.
+                        tableta.
+                    </li>
+                    <li><b>"Datos personales"</b> es cualquier información relacionada con un individuo identificado o
+                        identificable.</li>
+                    <li><b>"Servicio"</b> se refiere al sitio web.</li>
+                    <li><b>"Proveedor de servicios"</b> significa cualquier persona física o jurídica que procesa los
+                        datos en nombre de la Compañía.
+                        Él
+                        se refiere a empresas de terceros o personas empleadas por la Empresa para facilitar el
+                        Servicio, proporcionar
+                        el Servicio en nombre de la Empresa, para realizar servicios relacionados con el Servicio o para
+                        ayudar a la Empresa en
+                        analizando cómo se utiliza el Servicio.</li>
+                    <li><b>"Datos de uso"</b> hace referencia a los datos recopilados automáticamente, ya sea generados
+                        por el uso del Servicio o
+                        desde el
+                        La propia infraestructura del servicio (por ejemplo, la duración de la visita a una página).
+                    </li>
+                    <li><b>"Usted"</b> significa la persona que accede o utiliza el Servicio, o la empresa u otra
+                        entidad legal en
+                        beneficio
+                        de los cuales dicha persona está accediendo o utilizando el Servicio, según corresponda.</li>
+                </ul>
+                <h2 class="fw-bold mb-3">Recopilación y uso de sus datos personales</h2>
+                <h3 class="fw-bold">Tipos de datos recopilados</h3>
+                <h4 class="fw-bold">Datos personales</h4>
+                <p>Mientras usa Nuestro Servicio, podemos pedirle que nos proporcione cierta información de
+                    identificación personal que puede
+                    usarse para contactarlo o identificarlo. La información de identificación personal puede incluir,
+                    entre otros:</p>
+                <ul>
+                    <li>Dirección de correo electrónico</li>
+                    <li>Nombre y apellidos</li>
+                    <li>Identidad de género y orientación</li>
+                    <li>Ciudad</li>
+                    <li>Datos de uso</li>
+                </ul>
+                <h4 class="fw-bold">Datos de uso</h4>
+                <p>Los datos de uso se recopilan automáticamente cuando se utiliza el Servicio.</p>
+                <p>Los datos de uso pueden incluir información como la dirección del protocolo de Internet de su
+                    dispositivo (por ejemplo, la dirección IP), el navegador
+                    tipo, versión del navegador, las páginas de nuestro Servicio que visita, la hora y la fecha de su
+                    visita, el tiempo dedicado
+                    en esas páginas, identificadores únicos de dispositivos y otros datos de diagnóstico.</p>
+                <p>Cuando accede al Servicio a través de un dispositivo móvil, podemos recopilar cierta información
+                    automáticamente,
+                    incluyendo, pero no limitado a, el tipo de dispositivo móvil que utiliza, la identificación única de
+                    su dispositivo móvil, la dirección IP
+                    de Su dispositivo móvil, Su sistema operativo móvil, el tipo de navegador de Internet móvil que
+                    utiliza, dispositivo único
+                    identificadores y otros datos de diagnóstico.</p>
+                <p>También podemos recopilar información que su navegador envía cada vez que visita nuestro Servicio o
+                    cuando accede al
+                    Servicio por o a través de un dispositivo móvil.</p>
+                <h4 class="fw-bold">Información recopilada durante el uso de la aplicación</h4>
+                <p>Mientras usa Nuestra Aplicación, para proporcionar funciones de Nuestra Aplicación, podemos
+                    recopilar, con Su información previa
+                    permiso:</p>
+                <ul>
+                    <li>Información sobre
+
+
+
+
+    </main>
+</body>
+
+<footer class="text-center textofooter">
+
+    <section class="p-4 bg-navbar">
+
+    </section>
+
+    <section class="">
+        <div class="container text-center text-md-start mt-2">
+            <div class="row mt-4">
+
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                    <h5 class="text-uppercase fw-bold border-bottom border-primary">INFORMACION</h5>
+                    <p> <a href="sobreNosotros.html" class="sinestilo"> Sobre nosotros</a></p>
+                    <p> <a href="politicaPrivacidad.html" class="sinestilo">Politica de Privacidad</a></p>
+                    <p> <a href="contacto.html" class="sinestilo">Contacto</a></p>
+                </div>
+
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-5 border-end border-start border-dark">
+                    <div class="text-center imgfooter">
+                        <h3>GUESS THE COVER</h3>
+                        <img src="logo/gtc1.png" class="imgfooter" alt="Logo">
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2">
+                    <h5 class="text-uppercase fw-bold border-bottom border-primary">Redes sociales</h5>
+                    <!-- <img src="logo/icons8-tik-tok-94.png" class=" imgtamano3 " alt="tiktok">                           
+                    <img src="logo/icons8-instagram-48.png" class=" imgtamano3" alt="instagram">
+                    <img src="logo/icons8-facebook-nuevo-48.png" class=" imgtamano3" alt="facebook">
+                    <img src="logo/icons8-twitter-48.png" class=" imgtamano3" alt="twitter"> -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</footer>
+<script src="./javascript/AdivinaJuegoFacil.js"></script>
+
+</html>

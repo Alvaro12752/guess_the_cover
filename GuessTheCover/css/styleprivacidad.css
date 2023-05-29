@@ -1,0 +1,51 @@
+
+ /*
+ * Main theme
+*/
+.navbar {
+    background-color: rgba(0, 0, 0, 0.932);
+  }
+  
+  .container-fluid {
+    margin: 0;
+    padding: 0;
+    .row {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  /*
+  *
+  * ==========================================
+  * CUSTOM UTIL CLASSES
+  * ==========================================
+  *
+  */
+  .dropdown {
+    &:hover {
+      > .dropdown-menu {
+        display: block;
+      }
+    }
+  }
+  .megamenu {
+    position: static;
+    .dropdown-menu {
+    border: none;
+    width: 100%;
+    }
+  }
+p{
+    color: white;
+    font-size: 25px;
+}
+
+li{
+    color: white;
+    font-size: 25px; 
+}
+h5 {
+    font-size: 20px;
+    font-family: '1up';
+    color: rgb(247, 0, 255);
+  }
