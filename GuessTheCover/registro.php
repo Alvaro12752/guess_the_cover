@@ -95,13 +95,13 @@
     </header>
 
     <main class="row py-5">
-        <div class="col-md-6 d-flex d-none d-sm-none d-md-flex justify-content-center">
+        <div class="col-md-6 d-flex  d-md-flex justify-content-center">
             <div class="text-center">
                 <h1>GUESS <br> THE <br> COVER</h1>
                 <img src="logo/gtc1.png" class="logo" alt="Logo">
             </div>
         </div>
-        <form method="POST" action="" id="loginregistro" class="col-md-4 px-4 py-2">
+        <form method="POST" action="" id="loginregistro" class="col-md-4 ml-3 px-4 py-2">
             <div>
                 <h2>Registro</h2>
             </div>

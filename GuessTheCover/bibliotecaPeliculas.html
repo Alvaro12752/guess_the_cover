@@ -108,10 +108,16 @@
 
 
 
-    <main class="row">
+    <main class="row justify-content-center align-items-center ml-4 " style="margin-left: 40px !important;">
         <div class="">
             <h1>Lista de películas</h1>
+            <div class="row mt-5 mb-5 w-300 justify-content-center align-items-center">
+                <input type="text" id="search" placeholder="Buscar película">
+                <button class="botonbuscar mr-1" id="search-button">Buscar</button>
+                <button class="botonbuscar" id="reset-button">Borrar</button>
+            </div>
             <div class=" bibliotecadepeliculas row" id="movies-list"></div>
+            <div id="page-container"></div>
 
             <div class="paginacion text-center mt-5">
                 <button id="previous-button">Anterior</button>
@@ -126,28 +132,28 @@
     <footer class="text-center textofooter">
 
         <section class="p-4 bg-navbar">
-    
+
         </section>
-    
+
         <section class="">
             <div class="container text-center text-md-start mt-2">
                 <div class="row mt-4">
-    
+
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-    
+
                         <h5 class="text-uppercase fw-bold border-bottom border-primary">INFORMACION</h5>
                         <p> <a href="sobreNosotros.html" class="sinestilo"> Sobre nosotros</a></p>
                         <p> <a href="politicaPrivacidad.html" class="sinestilo">Politica de Privacidad</a></p>
                         <p> <a href="contacto.html" class="sinestilo">Contacto</a></p>
                     </div>
-    
+
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-5 border-end border-start border-dark">
                         <div class="text-center imgfooter">
                             <h3>GUESS THE COVER</h3>
                             <img src="logo/gtc1.png" class="imgfooter" alt="Logo">
                         </div>
                     </div>
-    
+
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2">
                         <h5 class="text-uppercase fw-bold border-bottom border-primary">Redes sociales</h5>
                         <!-- <img src="logo/icons8-tik-tok-94.png" class=" imgtamano3 " alt="tiktok">                           
@@ -156,10 +162,10 @@
                         <img src="logo/icons8-twitter-48.png" class=" imgtamano3" alt="twitter"> -->
                     </div>
                 </div>
-    
+
             </div>
         </section>
-    
+
     </footer>
 
 

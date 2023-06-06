@@ -25,102 +25,90 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <body>
-<header>
-            <nav class="navbar navbar-expand-lg  py-3 fixed-top">
-                <a class="navbar-brand" href="index.html">
-                    <img src="logo/gtc1.png" class="d-inline-block align-top logonavbar" alt="">
-                </a>
-                <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Megamenu-->
-                        <a class="nav-link" href="perfil.php">
-                            <h3>Perfil</h3>
+    <header>
+        <nav class="navbar navbar-expand-lg  py-3 fixed-top">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo/gtc1.png" class="d-inline-block align-top logonavbar" alt="">
+            </a>
+            <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Megamenu-->
+                    <a class="nav-link" href="perfil.php">
+                        <h3>Perfil</h3>
+                    </a>
+                    <a class="nav-link" href="ranking.php">
+                        <h3>Ranking</h3>
+                    </a>
+                    <a class="nav-link mr-5" href="registro.php">
+                        <h3>Registrarse</h3>
+                    </a>
+                    <li class="nav-item dropdown mr-2 megamenu"><a id="megamenu" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">
+                            <h5>Juegos</h5>
                         </a>
-                        <a class="nav-link" href="ranking.php">
-                            <h3>Ranking</h3>
-                        </a>
-                        <a class="nav-link mr-5" href="registro.php">
-                            <h3>Registrarse</h3>
-                        </a>
-                        <li class="nav-item dropdown mr-2 megamenu"><a id="megamenu" href="" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"
-                                class="nav-link dropdown-toggle font-weight-bold text-uppercase">
-                                <h5>Juegos</h5>
-                            </a>
-                            <div aria-labelledby="megamenu" class="dropdown-menu border-0 p-0 m-0">
-                                <div class="container-fluid" style="  background-color: rgba(0, 0, 0, 0.932)">
-                                    <div class="row rounded-0 m-0 shadow-sm">
-                                        <div class="col-12">
-                                            <div class="p-4">
-                                                <div class="row">
-                                                    <div class="col-sm-6 col-lg-3 mr-5 mb-4">
-                                                        <h5 class="text-uppercase">Guess The Cover</h5>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><a href="AdivinaPelicula.php"
-                                                                    class="nav-link text-small pb-0">Películas</a></li>
-                                                            <li class="nav-item"><a href="AdivinaJuegoFacil.php"
-                                                                    class="nav-link text-small pb-0 ">Videjuegos</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-sm-6 col-lg-3 mb-4">
-                                                        <h5 class="font-weight-bold text-uppercase">Wordles</h5>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item mt-5"><a href="wordlepeliculas.php"
-                                                                    class="nav-link pb-0 ">Películas</a></li>
-                                                            <li class="nav-item"><a href="wordlejuegos.php"
-                                                                    class="nav-link  pb-0 ">Videjuegos </a></li>
-                                                        </ul>
-                                                    </div>
+                        <div aria-labelledby="megamenu" class="dropdown-menu border-0 p-0 m-0">
+                            <div class="container-fluid" style="  background-color: rgba(0, 0, 0, 0.932)">
+                                <div class="row rounded-0 m-0 shadow-sm">
+                                    <div class="col-12">
+                                        <div class="p-4">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-lg-3 mr-5 mb-4">
+                                                    <h5 class="text-uppercase">Guess The Cover</h5>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="AdivinaPelicula.php" class="nav-link text-small pb-0">Películas</a></li>
+                                                        <li class="nav-item"><a href="AdivinaJuegoFacil.php" class="nav-link text-small pb-0 ">Videjuegos</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-6 col-lg-3 mb-4">
+                                                    <h5 class="font-weight-bold text-uppercase">Wordles</h5>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item mt-5"><a href="wordlepeliculas.php" class="nav-link pb-0 ">Películas</a></li>
+                                                        <li class="nav-item"><a href="wordlejuegos.php" class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li class="nav-item dropdown megamenu"><a id="megamenu" href="" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"
-                                class="nav-link dropdown-toggle font-weight-bold text-uppercase">
-                                <h5>Bibliotecas</h5>
-                            </a>
-                            <div aria-labelledby="megamenu" class="dropdown-menu border-0 p-0 m-0">
-                                <div class="container-fluid" style="  background-color: rgba(0, 0, 0, 0.932)">
-                                    <div class="row rounded-0 m-0 shadow-sm">
-                                        <div class="col-12">
-                                            <div class="p-4">
-                                                <div class="row">
-                                                    <div class="col-sm-6 col-lg-3 mr-5 mb-4">
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><a href="bibliotecaPeliculas.html"
-                                                                    class="nav-link text-small pb-0">Películas</a></li>
-                                                            <li class="nav-item"><a href="bibliotecaJuegos.html"
-                                                                    class="nav-link text-small pb-0 ">Videjuegos</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown megamenu"><a id="megamenu" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">
+                            <h5>Bibliotecas</h5>
+                        </a>
+                        <div aria-labelledby="megamenu" class="dropdown-menu border-0 p-0 m-0">
+                            <div class="container-fluid" style="  background-color: rgba(0, 0, 0, 0.932)">
+                                <div class="row rounded-0 m-0 shadow-sm">
+                                    <div class="col-12">
+                                        <div class="p-4">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-lg-3 mr-5 mb-4">
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="bibliotecaPeliculas.html" class="nav-link text-small pb-0">Películas</a></li>
+                                                        <li class="nav-item"><a href="bibliotecaJuegos.html" class="nav-link text-small pb-0 ">Videjuegos</a>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
-                </div>
-                <button type="button" style="background-color: transparent;" data-toggle="collapse"
-                    data-target="#navbarContent" aria-controls="navbars" aria-expanded="false"
-                    aria-label="Toggle navigation" class="navbar-toggler order-md-3">
-                    <img src="imagenes/icons8-menú-48.png" alt="Descripción de la imagen">
-                </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <button type="button" style="background-color: transparent;" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler order-md-3">
+                <img src="imagenes/icons8-menú-48.png" alt="Descripción de la imagen">
+            </button>
 
-            </nav>
-        </header>
+        </nav>
+    </header>
 
 
     <script>
-        $(function () {
-            $('.navbar-toggler').click(function () {
+        $(function() {
+            $('.navbar-toggler').click(function() {
                 $('#previousContent').collapse('hide');
             });
         });
@@ -134,23 +122,30 @@ if (!isset($_SESSION['username'])) {
     </style>
 
     <main class="row py-5" style="width: 100%;">
-    
-        <div class="col-md-4 d-flex  align-items-center justify-content-center order-1">
-            <div class="d-flex flex-column align-items-center justify-content-center mb-3">
+
+        <div class="col-md-4 d-flex col-md-5 align-items-center justify-content-center ">
+            <div class="fotojuegoadivina d-flex flex-column align-items-center justify-content-center mb-3">
                 <div>
                     <form class="formbuscar mt-2 mb-3 col-auto w-300" id="search-form">
                         <input type="text" class="no-outline" maxlength="28" id="search" name="name">
                         <button id="botonbuscar" type="submit">Buscar</button>
                     </form>
                 </div>
-                <div class="blur col d-flex mt-5 justify-content-center" id="juego">
+                <div class="blur col d-flex mt-5 justify-content-center juego" id="juego">
                     <!-- Contenido del segundo div -->
                 </div>
 
 
             </div>
+
         </div>
-        <div class="col-md-3  textocomprobacion d-flex flex-column justify-content-center align-items-center order-3">
+        <div class="col-md-4 d-flex flex-column align-items-center justify-content-center ">
+            <div class="contenedorresultados">
+                <h1 class="text-center">Resultados</h1>
+                <div id="results"></div>
+            </div>
+        </div>
+        <div class="ml-5 textocomprobacion d-flex flex-column justify-content-center align-items-center ">
             <div id="mensajeerror">
             </div>
             <div id="mensajeacierto">
@@ -175,13 +170,9 @@ if (!isset($_SESSION['username'])) {
             </div>
 
         </div>
-        <div class="col-md-5 d-flex flex-column align-items-center justify-content-center order-2">
-            <div class="contenedorresultados">
-                <h1 class="text-center">Resultados</h1>
-                <div id="results"></div>
-            </div>
-        </div>
+
     </main>
+
 </body>
 
 <footer class="text-center textofooter">
