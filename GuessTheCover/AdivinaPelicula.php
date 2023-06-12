@@ -32,14 +32,14 @@ if (!isset($_SESSION['username'])) {
             <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
                 <ul class="navbar-nav ml-auto">
                     <!-- Megamenu-->
+                    <a class="nav-link" href="registro.php">
+                        <h3>Registrarse</h3>
+                    </a>
                     <a class="nav-link" href="perfil.php">
                         <h3>Perfil</h3>
                     </a>
-                    <a class="nav-link" href="ranking.php">
+                    <a class="nav-link mr-5" href="ranking.php">
                         <h3>Ranking</h3>
-                    </a>
-                    <a class="nav-link mr-5" href="registro.php">
-                        <h3>Registrarse</h3>
                     </a>
                     <li class="nav-item dropdown mr-2 megamenu"><a id="megamenu" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">
                             <h5>Juegos</h5>
@@ -63,6 +63,8 @@ if (!isset($_SESSION['username'])) {
                                                     <ul class="list-unstyled">
                                                         <li class="nav-item mt-5"><a href="wordlepeliculas.php" class="nav-link pb-0 ">Películas</a></li>
                                                         <li class="nav-item"><a href="wordlejuegos.php" class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                        <li class="nav-item"><a href="WordleJuegoDificil.php" class="nav-link  pb-0 ">Wordle Videojuegos </a></li>
+                                                        <li class="nav-item"><a href="WordlePeliculaDificil.php" class="nav-link  pb-0 ">Wordle Peliculas </a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -135,6 +137,7 @@ if (!isset($_SESSION['username'])) {
                 <p>Tiempo restante: <br> <span id="timer">90</span> segundos</p>
             </div>
             <div id="vidas">
+                <p>Nombre de la película:<br> <span id="nombrePeliculaActual"></span></p>
                 <span><img src="imagenes/vida.png" alt="vida" class="vida"></span>
                 <span><img src="imagenes/vida.png" alt="vida" class="vida"></span>
                 <span><img src="imagenes/vida.png" alt="vida" class="vida"></span>

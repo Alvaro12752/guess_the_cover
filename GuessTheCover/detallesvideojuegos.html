@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styledetalles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="shortcut icon" href="logo/gtc1.png" type="image/x-icon">
     <title>Detalles</title>
@@ -22,14 +23,14 @@
         <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
             <ul class="navbar-nav ml-auto">
                 <!-- Megamenu-->
+                <a class="nav-link" href="registro.php">
+                    <h3>Registrarse</h3>
+                </a>
                 <a class="nav-link" href="perfil.php">
                     <h3>Perfil</h3>
                 </a>
-                <a class="nav-link" href="ranking.php">
+                <a class="nav-link mr-5" href="ranking.php">
                     <h3>Ranking</h3>
-                </a>
-                <a class="nav-link mr-5" href="registro.php">
-                    <h3>Registrarse</h3>
                 </a>
                 <li class="nav-item dropdown mr-2 megamenu"><a id="megamenu" href="" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false"
@@ -55,10 +56,10 @@
                                             <div class="col-sm-6 col-lg-3 mb-4">
                                                 <h5 class="font-weight-bold text-uppercase">Wordles</h5>
                                                 <ul class="list-unstyled">
-                                                    <li class="nav-item mt-5"><a href="wordlepeliculas.php"
-                                                            class="nav-link pb-0 ">Películas</a></li>
-                                                    <li class="nav-item"><a href="wordlejuegos.php"
-                                                            class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                    <li class="nav-item mt-5"><a href="wordlepeliculas.php" class="nav-link pb-0 ">Películas</a></li>
+                                                    <li class="nav-item"><a href="wordlejuegos.php" class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                    <li class="nav-item"><a href="WordleJuegoDificil.php" class="nav-link  pb-0 ">Wordle Videojuegos </a></li>
+                                                    <li class="nav-item"><a href="WordlePeliculaDificil.php" class="nav-link  pb-0 ">Wordle Peliculas </a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -109,12 +110,12 @@
 <body>
 
     <div class="container">
-        <h1 class="textoinfo text-center my-4">Detalles del Juego</h1>
-        <div class="row">
+        <h1 class="textoinfo text-center my-4 justify-content-center align-items-center">Detalles del Juego</h1>
+        <div class="row justify-content-center align-items-center">
             <div class="col-md-4">
-                <img id="game-image" src="" alt="Game Cover" class="img-fluid rounded mb-3 mx-auto d-block">
+                <img id="game-image" src="" alt="Game Cover" class="img-fluid rounded mb-3 mx-auto d-block justify-content-center align-items-center">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 justify-content-center align-items-center">
                 <h2 id="game-title" class="text-center"></h2>
                 <p id="fechalanzamiento"></p>
                 <p id="clasificacion"></p>

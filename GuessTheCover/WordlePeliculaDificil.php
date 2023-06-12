@@ -2,10 +2,11 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header('Location: login.php');
+    header('Location:./login.php');
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +19,10 @@ if (!isset($_SESSION['username'])) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/stylewordle.css">
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="shortcut icon" href="logo/gtc1.png" type="image/x-icon">
-    <title>Wordle Juegos</title>
+    <title>Wordle Peliculas Dificil</title>
 </head>
 
 <body>
@@ -106,63 +107,148 @@ if (!isset($_SESSION['username'])) {
 
         </nav>
     </header>
+    <style>
+        body {
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
+        main {
+            text-align: center;
+        }
 
+        table {
+            border-collapse: collapse;
+        }
 
-    <main class="row m-5 my-main">
-        <div class="col d-flex  align-items-center justify-content-center">
-            <div class="d-flex flex-column align-items-center justify-content-center mb-3">
+        td {
+            padding: 10px;
+            text-align: center;
+        }
 
-                <h1>Wordle de Videojuegos</h1>
-                <div id="wordle"></div>
-                <button id="new-wordle-button">Nueva palabra</button>
+        .correct {
+            color: rgb(75, 251, 32)
+        }
 
-            </div>
+        .incorrect {
+            color: rgb(255, 10, 10);
+        }
 
+        .partial {
+            color: orange;
+        }
 
-        </div>
-    </main>
+        .input-width {
+            width: 200px;
+            /* El ancho que desees */
+        }
 
+        .red-text {
+            color: red;
+            font-size: 30px;
+        }
 
+        .aviso-text {
+            font-size: 30px;
+        }
 
+        .felicidades-text {
+            color: rgb(75, 251, 32);
+            font-size: 30px;
+        }
+        #message{
+            font-size: 30px;
+        }
+    </style>
+    </head>
 
-</body>
-
-<footer class="text-center textofooter">
-
-
-    <section class="">
-        <div class="container text-center text-md-start mt-2">
-            <div class="row mt-4">
-
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-                    <h5 class="text-uppercase fw-bold border-bottom border-primary">INFORMACION</h5>
-                    <p> <a href="sobreNosotros.html" class="sinestilo"> Sobre nosotros</a></p>
-                    <p> <a href="politicaPrivacidad.html" class="sinestilo">Politica de Privacidad</a></p>
-                    <p> <a href="contacto.html" class="sinestilo">Contacto</a></p>
+    <body>
+        <main class="container">
+            <div class="container align-items-center justify-content-center">
+                <h1 class="mt-5">Wordle películas</h1>
+                <div class=" tutorial row justify-content-center text-center p-3">
+                    <h3><strong> Las reglas son sencillas. Tendrás que adivinar la película misteriosa letra por letra en
+                            un máximo de 10 intentos:
+                            <ul>
+                                <li style="color: rgb(75, 251, 32);">Letra verde: Has adivinado correctamente la letra y
+                                    está en la posición correcta.</li>
+                                <li style="color:  orange;">Letra naranja: Has adivinado la letra, pero no está en la
+                                    posición correcta.</li>
+                                <li style="color: red;">Letra roja: La película no contiene esa letra.</li>
+                            </ul>
+                            ¡Buena suerte en tu búsqueda de la película misteriosa!
+                        </strong>
+                    </h3>
                 </div>
-
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-5 border-end border-start border-dark">
-                    <div class="text-center imgfooter">
-                        <h3>GUESS THE COVER</h3>
-                        <img src="logo/gtc1.png" class="imgfooter" alt="Logo">
+                <div class="d-flex align-items-center justify-content-center text-center mt-5" style="height: 10vh;">
+                    <div class="input-group mb-3" style="width: 400px;">
+                        <input type="text" id="guessInput" class="form-control mx-auto" maxlength="10" autocomplete="off">
+                        <div class="input-group-append">
+                            <button id="guessButton" class="btn btn-primary">Adivinar</button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2">
-                    <h5 class="text-uppercase fw-bold border-bottom border-primary">Redes sociales</h5>
-                    <!-- <img src="logo/icons8-tik-tok-94.png" class=" imgtamano3 " alt="tiktok">                           
+                <div class="d-flex justify-content-center mb-5" style="margin-left: 100px;">
+                    <table id="wordTable" class="text-center justify-content-center">
+                        <tr class="text-center">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h2 class="mb-5">Intentos restantes: <span id="remainingAttempts">10</span></h2>
+
+
+
+
+                <p id="message"></p>
+            </div>
+            </div>
+        </main>
+        <script src="./javascript/wordlepeliculadificil.js"></script>
+    </body>
+
+    <footer class="text-center textofooter">
+
+
+        <section class="">
+            <div class="container text-center text-md-start mt-2">
+                <div class="row mt-4">
+
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                        <h5 class="text-uppercase fw-bold border-bottom border-primary">INFORMACION</h5>
+                        <p> <a href="sobreNosotros.html" class="sinestilo"> Sobre nosotros</a></p>
+                        <p> <a href="politicaPrivacidad.html" class="sinestilo">Politica de Privacidad</a></p>
+                        <p> <a href="contacto.html" class="sinestilo">Contacto</a></p>
+                    </div>
+
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-5 border-end border-start border-dark">
+                        <div class="text-center imgfooter">
+                            <h3>GUESS THE COVER</h3>
+                            <img src="logo/gtc1.png" class="imgfooter" alt="Logo">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2">
+                        <h5 class="text-uppercase fw-bold border-bottom border-primary">Redes sociales</h5>
+                        <!-- <img src="logo/icons8-tik-tok-94.png" class=" imgtamano3 " alt="tiktok">                           
                     <img src="logo/icons8-instagram-48.png" class=" imgtamano3" alt="instagram">
                     <img src="logo/icons8-facebook-nuevo-48.png" class=" imgtamano3" alt="facebook">
                     <img src="logo/icons8-twitter-48.png" class=" imgtamano3" alt="twitter"> -->
+                    </div>
                 </div>
+
             </div>
+        </section>
 
-        </div>
-    </section>
+    </footer>
 
-</footer>
-<script src="./javascript/wordle.js"></script>
 
 </html>

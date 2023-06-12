@@ -5,6 +5,7 @@ let marcador = 0;
 let nombreJuegoActual = "";
 let juego = document.getElementById("juego");
 
+
 fetch('https://api.rawg.io/api/games?&key=cd721907eaba4ec29085eebb921d5f95&dates=2000-01-01,2023-04-07')
   .then(response => response.json())
   .then(response => { 
@@ -17,26 +18,32 @@ fetch('https://api.rawg.io/api/games?&key=cd721907eaba4ec29085eebb921d5f95&dates
     portada1.src = imagen;
     portada1.alt = nombreJuegoActual; // Asignar el nombre del juego al atributo alt
     juego.appendChild(portada1);
-
+    mostrarNombreJuegoSiRol2(nombreJuegoActual);
   })
   .catch(err => console.error(err));
 
   //imagen aleatoria cada vez que el jugador acierta el juego
-function obtenerJuegoAleatorio() {
-  fetch('https://api.rawg.io/api/games?&key=cd721907eaba4ec29085eebb921d5f95&dates=2000-01-01,2023-04-07')
-	.then(response => response.json())
-	.then(response => { 
-		let resultados = response ["results"]
-    // Obtén una imagen aleatoria del primer conjunto de resultados
-    let imagen = resultados[Math.floor(Math.random()*resultados.length)]["background_image"]
-    // Actualiza la imagen del juego en la página con la nueva imagen obtenida
-    let portada = document.createElement('img')
-    portada.src = (imagen)
-    juego.replaceChild(portada, juego.firstElementChild)
-	})
-	.catch(err => console.error(err));
-}
-
+  function obtenerJuegoAleatorio() {
+    fetch('https://api.rawg.io/api/games?&key=cd721907eaba4ec29085eebb921d5f95&dates=2000-01-01,2023-04-07')
+      .then(response => response.json())
+      .then(response => { 
+        let resultados = response["results"];
+        let juegoAleatorio = resultados[Math.floor(Math.random() * resultados.length)];
+        let imagen = juegoAleatorio["background_image"];
+        nombreJuegoActual = juegoAleatorio["name"]; // Utilizar la variable global en lugar de declarar una nueva variable
+  
+        let portada = document.createElement('img');
+        portada.src = imagen;
+        portada.alt = nombreJuegoActual;
+        juego.replaceChild(portada, juego.firstElementChild);
+  
+        // Llamar a la función y pasarle el nombre del juego actual
+        mostrarNombreJuegoSiRol2(nombreJuegoActual);
+      })
+      .catch(err => console.error(err));
+  }
+  
+  
 // BUSCADOR A TIEMPO REAL 
 const form = document.querySelector('#search-form');
 const resultsSection = document.querySelector('#results');
@@ -216,7 +223,7 @@ function mostrarNombreJuego() {
   mensajeAciertoElement.style.display = "none";
 }
 
-function obtenerRolUsuario() {
+function mostrarNombreJuegoSiRol2(nombreJuegoActual) {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "obtenerRol.php", true);
 
@@ -225,8 +232,19 @@ function obtenerRolUsuario() {
       if (xhr.status === 200) {
         var response = JSON.parse(xhr.responseText);
         var rol = response.rol;
+        console.log("Rol del usuario:", rol);
+        var nombreJuegoActualElement = document.getElementById("nombreJuegoActual");
+        if (nombreJuegoActualElement) {
+          nombreJuegoActualElement.textContent = nombreJuegoActual;
+        }
+        
         if (rol === 2) {
+          console.log("Nombre del juego:", nombreJuegoActual); // Agregar este console.log
           mostrarNombreJuego();
+          var nombreImagenJuegoElement = document.getElementById("nombreImagenJuego");
+          if (nombreImagenJuegoElement) {
+            nombreImagenJuegoElement.textContent = nombreJuegoActual;
+          }
         }
       } else {
         console.error("Error al obtener el rol del usuario. Código de estado: " + xhr.status);

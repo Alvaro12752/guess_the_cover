@@ -39,27 +39,28 @@ function nuevaPartida() {
     }
 
     // Verificar si el usuario ya tiene una entrada en la tabla de puntuación
-    $sql = "SELECT * FROM puntuacion WHERE idRelacion = $idUsuario AND idJuego = 1";
+    $sql = "SELECT * FROM puntuacion WHERE idUsuario = $idUsuario AND idJuego = 1";
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado) {
         if (mysqli_num_rows($resultado) > 0) {
-            // El usuario ya tiene una entrada, actualizar su puntuación
+            // El usuario ya tiene una entrada, obtener el número de partida actual
             $row = mysqli_fetch_assoc($resultado);
-            $puntuacionActual = $row["puntuacion"];
-            $nuevaPuntuacion = $puntuacionActual + 1;
+            $partidaActual = $row["partida"];
+            $nuevaPartida = $partidaActual + 1;
 
-            $sql = "UPDATE puntuacion SET puntuacion = $nuevaPuntuacion WHERE idRelacion = $idUsuario AND idJuego = 1";
+            // Insertar una nueva entrada con el número de partida incrementado y puntuación inicial de 1
+            $sql = "INSERT INTO puntuacion (partida, idUsuario, puntuacion, idJuego) VALUES ($nuevaPartida, $idUsuario, 1, 1)";
             $resultado = mysqli_query($conexion, $sql);
 
             if ($resultado) {
-                echo "La puntuación ha sido actualizada exitosamente";
+                echo "La puntuación ha sido insertada exitosamente";
             } else {
-                echo "Error al actualizar la puntuación: " . mysqli_error($conexion);
+                echo "Error al insertar la puntuación: " . mysqli_error($conexion);
             }
         } else {
-            // El usuario no tiene una entrada, insertar una nueva entrada con puntuación inicial de 1
-            $sql = "INSERT INTO puntuacion (idRelacion, puntuacion, idJuego) VALUES ($idUsuario, 1, 1)";
+            // El usuario no tiene una entrada, insertar una nueva entrada con partida 1 y puntuación inicial de 1
+            $sql = "INSERT INTO puntuacion (partida, idUsuario, puntuacion, idJuego) VALUES (1, $idUsuario, 1, 1)";
             $resultado = mysqli_query($conexion, $sql);
 
             if ($resultado) {

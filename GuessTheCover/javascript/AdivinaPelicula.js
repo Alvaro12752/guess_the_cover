@@ -3,6 +3,7 @@ let pelicula = document.getElementById("pelicula");
 let vidas = 5;
 let nombrePeliculaActual = "";
 let marcador = 0;
+let peliculaSeleccionada;
 
   //Imagen aleatoria cada vez que carga la página
   fetch('https://api.themoviedb.org/3/movie/popular?api_key=8f7fb1324c844422ef19ce9b1d4afd65&language=es')
@@ -12,12 +13,13 @@ let marcador = 0;
       let peliculaSeleccionada = resultados[Math.floor(Math.random() * resultados.length)];
       let imagen = peliculaSeleccionada.backdrop_path;
       let url_imagen = "https://image.tmdb.org/t/p/w500" + imagen;
-      nombrePeliculaActual = peliculaSeleccionada.original_title;
+      nombrePeliculaActual = peliculaSeleccionada.title;
   
       let portada1 = document.createElement('img');
       portada1.src = url_imagen;
       portada1.alt = nombrePeliculaActual;
       pelicula.appendChild(portada1);
+      mostrarNombrePeliculaSiRol2(nombrePeliculaActual)
     })
     .catch(err => console.error(err));
 
@@ -26,15 +28,18 @@ let marcador = 0;
     fetch('https://api.themoviedb.org/3/movie/popular?api_key=8f7fb1324c844422ef19ce9b1d4afd65&language=es')
       .then(response => response.json())
       .then(response => { 
-          let resultados = response.results
-      // Obtén una imagen aleatoria del primer conjunto de resultados
-      let imagen = resultados[Math.floor(Math.random()*resultados.length)]["backdrop_path"]
-      // Construye la URL completa de la imagen
-       url_imagen = "https://image.tmdb.org/t/p/w500" + imagen
-      // Actualiza la imagen de la pelicula en la página con la nueva imagen obtenida
-      let portada = document.createElement('img')
-      portada.src = url_imagen
-      pelicula.replaceChild(portada, pelicula.firstElementChild)
+          let resultados = response.results;
+          peliculaSeleccionada = resultados[Math.floor(Math.random() * resultados.length)]; // Almacenar la película seleccionada
+          let imagen = peliculaSeleccionada.backdrop_path;
+          let url_imagen = "https://image.tmdb.org/t/p/w500" + imagen;
+          nombrePeliculaActual = peliculaSeleccionada.title; // Obtener el nombre de la película
+  
+          let portada = document.createElement('img');
+          portada.src = url_imagen;
+          pelicula.replaceChild(portada, pelicula.firstElementChild);
+  
+          // Actualizar el nombre de la película en la página
+          mostrarNombrePeliculaSiRol2(nombrePeliculaActual);
       })
       .catch(err => console.error(err));
   }
@@ -98,7 +103,6 @@ form.search.addEventListener('input', async () => {
 
     // Realiza una solicitud a la API de TMDB para buscar películas
     const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=8f7fb1324c844422ef19ce9b1d4afd65&query=${searchTerm}&language=es`);
-
 
     // Analiza los resultados de la API y muestra los resultados en la página
     const data = await response.json();
@@ -206,9 +210,9 @@ function actualizarPuntuacionAJAX() {
   };
 }
 
-// Verificar si la variable nombreImagenJuego está definida
+// Verificar si la variable nombreImagenPelicula está definida
 if (typeof nombreImagenPelicula !== 'undefined') {
-  // Mostrar el nombre de la imagen del juego
+  // Mostrar el nombre de la imagen del Pelicula
   console.log('Nombre de la imagen de la pelicula:', nombreImagenPelicula);
 }
 
@@ -220,4 +224,37 @@ function mostrarNombrePelicula() {
 
   let mensajeAciertoElement = document.getElementById("mensajeacierto");
   mensajeAciertoElement.style.display = "none";
+}
+
+
+function mostrarNombrePeliculaSiRol2(nombrePeliculaActual) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "obtenerRol.php", true);
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        var rol = response.rol;
+        console.log("Rol del usuario:", rol);
+        var nombrePeliculaActualElement = document.getElementById("nombrePeliculaActual");
+        if (nombrePeliculaActualElement) {
+          nombrePeliculaActualElement.textContent = nombrePeliculaActual;
+        }
+        
+        if (rol === 2) {
+          console.log("Nombre de la Pelicula:", nombrePeliculaActual); // Agregar este console.log
+          mostrarNombrePelicula();
+          var nombrePeliculaActualElement = document.getElementById("nombrePeliculaActual");
+          if (nombrePeliculaActualElement) {
+            nombrePeliculaActualElement.textContent = nombrePeliculaActual;
+          }
+        }
+      } else {
+        console.error("Error al obtener el rol del usuario. Código de estado: " + xhr.status);
+      }
+    }
+  };
+
+  xhr.send();
 }

@@ -13,6 +13,7 @@ CREATE TABLE usuario (
     contraseña VARCHAR(100) NOT NULL, /* Prepared to store encrypted passwords using password_hash() with PASSWORD_BCRYPT flag */
 	rol int DEFAULT NULL,
 	imagen_url VARCHAR(255),
+	ban TINYINT(1) DEFAULT 0,
 	PRIMARY KEY (idUsuario)
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

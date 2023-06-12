@@ -40,14 +40,14 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
             <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
                 <ul class="navbar-nav ml-auto">
                     <!-- Megamenu-->
+                    <a class="nav-link" href="registro.php">
+                        <h3>Registrarse</h3>
+                    </a>
                     <a class="nav-link" href="perfil.php">
                         <h3>Perfil</h3>
                     </a>
-                    <a class="nav-link" href="ranking.php">
+                    <a class="nav-link mr-5" href="ranking.php">
                         <h3>Ranking</h3>
-                    </a>
-                    <a class="nav-link mr-5" href="registro.php">
-                        <h3>Registrarse</h3>
                     </a>
                     <li class="nav-item dropdown mr-2 megamenu"><a id="megamenu" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">
                             <h5>Juegos</h5>
@@ -71,6 +71,8 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                                                     <ul class="list-unstyled">
                                                         <li class="nav-item mt-5"><a href="wordlepeliculas.php" class="nav-link pb-0 ">Pel√≠culas</a></li>
                                                         <li class="nav-item"><a href="wordlejuegos.php" class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                        <li class="nav-item"><a href="WordleJuegoDificil.php" class="nav-link  pb-0 ">Wordle Videojuegos </a></li>
+                                                        <li class="nav-item"><a href="WordlePeliculaDificil.php" class="nav-link  pb-0 ">Wordle Peliculas </a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -111,24 +113,21 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
 
         </nav>
     </header>
-
-
-
     <main class="">
         <?php
         if (isset($_SESSION['username']) && isset($_POST['submit'])) {
             $nombre_usuario = $_SESSION['username'];
-            $directory = "./imagenes/$nombre_usuario/";
+            $directory = "../carpetaAvatares/";
 
             if (!file_exists($directory)) {
                 mkdir($directory, 0777, true);
             }
 
-            $target_file = $directory . basename($_FILES["fileToUpload"]["name"]);
+            $target_file = $directory . uniqid() . "_" . basename($_FILES["fileToUpload"]["name"]);
 
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                 // Actualizar la ruta de la imagen en la base de datos
-                $imagen_url = $target_file; // Obtener la ruta de la imagen
+                $imagen_url = basename($target_file); // Obtener solo el nombre del archivo
 
                 // Establecer la conexi√≥n a la base de datos
                 $conexion = mysqli_connect("localhost", "root", "", "guess_the_cover");
@@ -146,16 +145,18 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
 
                 // Ejecutar la consulta SQL
                 if (mysqli_query($conexion, $sql)) {
+                    // √âxito al subir la imagen y actualizar la base de datos
                 } else {
-                    echo "<h3>Error al subir la imagen.</h3>" . mysqli_error($conexion);
+                    echo "" . mysqli_error($conexion);
                 }
 
                 // Cerrar la conexi√≥n a la base de datos
                 mysqli_close($conexion);
             } else {
-                echo "Error al subir el archivo.";
+                echo "";
             }
         }
+
         // Obtener la ruta de la imagen desde la base de datos para mostrarla en pantalla
         if (isset($_SESSION['username'])) {
             $nombre_usuario = $_SESSION['username'];
@@ -177,8 +178,8 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                 $row = mysqli_fetch_assoc($result);
                 $imagen_url = $row["imagen_url"];
 
-                // Mostrar la imagen en pantalla
-                // echo '<img src="' . $imagen_url . '" alt="Imagen del usuario">';
+                // // Mostrar la imagen en pantalla
+                // echo '<img src="../ruta/absoluta/al/directorio/avatar/' . $imagen_url . '" alt="Imagen del usuario">';
             }
 
             mysqli_close($conn);
@@ -208,6 +209,9 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                     if (mysqli_num_rows($result) == 1) {
                         $row = mysqli_fetch_assoc($result);
                         $imagen_url = $row["imagen_url"];
+
+                        // // Mostrar la imagen en pantalla
+                        // echo '<img src="../ruta/absoluta/al/directorio/avatar/' . $imagen_url . '" alt="Imagen del usuario">';
                     }
 
                     mysqli_close($conn);
@@ -220,7 +224,7 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                                 <label for="fileToUpload" class="d-block mb-3">
                                     <h3 class="mb-0"><?php echo $nombre_usuario ?></h3>
                                     <?php if (!empty($imagen_url)) : ?>
-                                        <img style="margin-top: 20px; width:300px; height:300px; border-radius:150px;" src="<?php echo $imagen_url; ?>" alt="Imagen de perfil" class="img-fluid imgp" onclick="document.getElementById('fileToUpload').click();">
+                                        <img style="margin-top: 20px; width:300px; height:300px; border-radius:150px;" src="../carpetaAvatares/<?php echo $imagen_url; ?>" alt="Imagen de perfil" class="img-fluid imgp" onclick="document.getElementById('fileToUpload').click();">
                                     <?php else : ?>
                                         <img src="./imagenes/fotoperfil.png" alt="Imagen predefinida" class="img-fluid imgp" onclick="document.getElementById('fileToUpload').click();">
                                     <?php endif; ?>
@@ -238,8 +242,6 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                 </div>
 
                 <?php
-
-
                 // Incluir archivo con la conexi√≥n a la base de datos
                 require_once "conexionBDRegistro.php";
 
@@ -267,6 +269,7 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
 
                     mysqli_close($conn);
                 }
+
                 $servername = "localhost";
                 $db_username = "root";
                 $db_password = "";
@@ -281,7 +284,6 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                 }
 
                 // Obtener todas las puntuaciones y n√∫meros de partida del usuario logueado en orden descendente
-
                 $sql = "SELECT puntuacion, partida FROM puntuacion WHERE idRelacion = $idUsuario AND idJuego = 1 ORDER BY puntuacion DESC";
                 $resultado = mysqli_query($conexion, $sql);
 
@@ -301,7 +303,7 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                             if (isset($_SESSION['image_url'])) {
                                 $image_url = $_SESSION['image_url'];
                                 echo "<div style='display: inline-flex; align-items: center;'>";
-                                echo "<img style='margin-top: 20px; width:55px; height:55px; border-radius:150px;' src='$image_url' alt='' class='img-fluid'>";
+                                echo "<img style='margin-top: 20px; width:55px; height:55px; border-radius:150px;' src='../carpetaAvatares/$image_url' alt='' class='img-fluid'>";
                                 echo "<h3 style='margin-left: 10px; margin-top: 20px; color: #2b8edf;'>Partida $numeroPartida - Puntuaci√≥n: $puntuacion</h3>";
                                 echo "</div>";
                             } else {
@@ -327,6 +329,7 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                 // Cerrar la conexi√≥n a la base de datos
                 mysqli_close($conexion);
                 ?>
+
                 <?php
                 // Incluir archivo con la conexi√≥n a la base de datos
                 require_once "conexionBDRegistro.php";
@@ -355,6 +358,7 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
 
                     mysqli_close($conn);
                 }
+
                 $servername = "localhost";
                 $db_username = "root";
                 $db_password = "";
@@ -369,7 +373,6 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                 }
 
                 // Obtener todas las puntuaciones y n√∫meros de partida del usuario logueado en orden descendente
-
                 $sql = "SELECT puntuacion, partida FROM puntuacion WHERE idRelacion = $idUsuario AND idJuego = 2 ORDER BY puntuacion DESC";
                 $resultado = mysqli_query($conexion, $sql);
 
@@ -378,7 +381,7 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                         // Mostrar las puntuaciones y n√∫meros de partida en HTML
                         echo '<div class="col-md-4 mb-5 d-flex flex-column">';
                         echo '<div class="contenedorresultados">';
-                        echo '<h1 class="text-center">Historial de Peliculas</h1>';
+                        echo '<h1 class="text-center">Historial de Pel√≠culas</h1>';
                         echo '<div id="results">';
                         while ($row = mysqli_fetch_assoc($resultado)) {
                             $puntuacion = $row["puntuacion"];
@@ -389,7 +392,7 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                             if (isset($_SESSION['image_url'])) {
                                 $image_url = $_SESSION['image_url'];
                                 echo "<div style='display: inline-flex; align-items: center;'>";
-                                echo "<img style='margin-top: 20px; width:55px; height:55px; border-radius:150px;' src='$image_url' alt='' class='img-fluid'>";
+                                echo "<img style='margin-top: 20px; width:55px; height:55px; border-radius:150px;' src='../carpetaAvatares/$image_url' alt='' class='img-fluid'>";
                                 echo "<h3 style='margin-left: 10px; margin-top: 20px; color: #2b8edf;'>Partida $numeroPartida - Puntuaci√≥n: $puntuacion</h3>";
                                 echo "</div>";
                             } else {
@@ -403,7 +406,7 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                         echo '</div>';
                     } else {
                         echo "<div class='col-md-3' style='display: inline-flex; align-items: center;'>";
-                        echo '<h3>Todavia no hay puntuaciones registradas.</h3>';
+                        echo '<h3>Todav√≠a no hay puntuaciones registradas.</h3>';
                         echo '</div>';
                     }
                 } else {
@@ -411,20 +414,123 @@ if (isset($_POST['logout'])) { // Si se ha enviado el formulario de cerrar sesi√
                     echo "Error al obtener las puntuaciones: " . mysqli_error($conexion);
                     echo "</div>";
                 }
+
+                // Cerrar la conexi√≥n a la base de datos
+                mysqli_close($conexion);
+                ?>
+
+                <?php
+                // Verificar si el usuario ha iniciado sesi√≥n y tiene el rol "2"
+                if (isset($_SESSION['rol']) && $_SESSION['rol'] == 2) {
+                    // Conexi√≥n a la base de datos
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "guess_the_cover";
+
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    if ($conn->connect_error) {
+                        die("Conexi√≥n fallida: " . $conn->connect_error);
+                    }
+
+                    // Verificar si se envi√≥ el formulario de baneo
+                    if (isset($_POST['ban_user'])) {
+                        $userId = $_POST['user_id'];
+
+                        // Actualizar el campo "ban" del usuario a 1 en la base de datos
+                        $updateSql = "UPDATE usuario SET ban = 1 WHERE idUsuario = $userId";
+                        $conn->query($updateSql);
+                    }
+
+                    // Verificar si se envi√≥ el formulario de desbanear
+                    if (isset($_POST['unban_user'])) {
+                        $userId = $_POST['user_id'];
+
+                        // Actualizar el campo "ban" del usuario a 0 en la base de datos
+                        $updateSql = "UPDATE usuario SET ban = 0 WHERE idUsuario = $userId";
+                        $conn->query($updateSql);
+                    }
+
+                    // Consulta SQL para obtener los usuarios y sus puntuaciones m√°s altas
+                    $sql = "SELECT usuario.idUsuario, usuario.usuario, usuario.ban,
+                    MAX(CASE WHEN Juegos.NombreJuego = 'VideoJuegos' THEN puntuacion.puntuacion ELSE 0 END) AS max_puntuacion_videojuegos,
+                    MAX(CASE WHEN Juegos.NombreJuego = 'Peliculas' THEN puntuacion.puntuacion ELSE 0 END) AS max_puntuacion_peliculas
+                    FROM usuario
+                    LEFT JOIN puntuacion ON usuario.idUsuario = puntuacion.idRelacion
+                    LEFT JOIN Juegos ON puntuacion.idJuego = Juegos.IdJuego
+                    GROUP BY usuario.idUsuario";
+
+
+                    echo "<div class='container text-center my-4'>
+<h1>Usuarios y puntuaciones m√°s altas</h1>
+<div class='table-responsive'>
+    <table class='table custom-table'>
+        <tr>
+            <th class='custom-header'>Usuario</th>
+            <th class='custom-header'>Puntuaci√≥n en Videojuegos</th>
+            <th class='custom-header'>Puntuaci√≥n en Pel√≠culas</th>
+            <th class='custom-header'>Acciones</th>
+        </tr>";
+
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $banStyle = $row['ban'] == 1 ? 'color: red;' : '';
+                            echo "<tr>
+        <td class='custom-cell' style='" . $banStyle . "'>" . $row["usuario"] . "</td>
+        <td class='custom-cell' style='" . $banStyle . "'>" . $row["max_puntuacion_videojuegos"] . "</td>
+        <td class='custom-cell' style='" . $banStyle . "'>" . $row["max_puntuacion_peliculas"] . "</td>
+        <td class='custom-cell'>
+            <form method='POST' action=''>
+                <input type='hidden' name='user_id' value='" . $row["idUsuario"] . "'>
+                <button type='submit' name='ban_user' class='btn' style='color: red; background-color: rgba(7, 7, 7, 0.621);'>Banear</button>
+                <button type='submit' name='unban_user' class='btn' style='color: rgb(3, 255, 3);  background-color: rgba(7, 7, 7, 0.621);'>Desbanear</button>
+            </form>
+        </td>
+    </tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4'>No se encontraron resultados.</td></tr>";
+                    }
+
+                    echo "</table></div></div>";
+
+
+                    $conn->close();
+                }
                 ?>
 
 
+
+
+                <style>
+                    .custom-table {
+                        color: rgba(43, 142, 223);
+                        /* Cambia el color de la letra */
+                    }
+
+                    .custom-header {
+                        font-size: 25px;
+                        /* Cambia el tama√±o de la letra en los encabezados */
+                    }
+
+                    .custom-cell {
+                        font-size: 25px;
+                        /* Cambia el tama√±o de la letra en las celdas */
+                    }
+                </style>
             </div>
+        </div>
+        </div>
+
+
+        </div>
         </div>
 
     </main>
 
     <footer class="text-center textofooter">
-
-        <section class="p-4 bg-navbar">
-
-        </section>
-
         <section class="">
             <div class="container text-center text-md-start mt-2">
                 <div class="row mt-4">

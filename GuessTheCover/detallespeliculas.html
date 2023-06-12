@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styledetalles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="shortcut icon" href="logo/gtc1.png" type="image/x-icon">
     <title>Detalles</title>
@@ -24,14 +25,14 @@
             <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
                 <ul class="navbar-nav ml-auto">
                     <!-- Megamenu-->
+                    <a class="nav-link" href="registro.php">
+                        <h3>Registrarse</h3>
+                    </a>
                     <a class="nav-link" href="perfil.php">
                         <h3>Perfil</h3>
                     </a>
-                    <a class="nav-link" href="ranking.php">
+                    <a class="nav-link mr-5" href="ranking.php">
                         <h3>Ranking</h3>
-                    </a>
-                    <a class="nav-link mr-5" href="registro.php">
-                        <h3>Registrarse</h3>
                     </a>
                     <li class="nav-item dropdown mr-2 megamenu"><a id="megamenu" href="" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false"
@@ -57,10 +58,10 @@
                                                 <div class="col-sm-6 col-lg-3 mb-4">
                                                     <h5 class="font-weight-bold text-uppercase">Wordles</h5>
                                                     <ul class="list-unstyled">
-                                                        <li class="nav-item mt-5"><a href="wordlepeliculas.php"
-                                                                class="nav-link pb-0 ">Películas</a></li>
-                                                        <li class="nav-item"><a href="wordlejuegos.php"
-                                                                class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                        <li class="nav-item mt-5"><a href="wordlepeliculas.php" class="nav-link pb-0 ">Películas</a></li>
+                                                        <li class="nav-item"><a href="wordlejuegos.php" class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                        <li class="nav-item"><a href="WordleJuegoDificil.php" class="nav-link  pb-0 ">Wordle Videojuegos </a></li>
+                                                        <li class="nav-item"><a href="WordlePeliculaDificil.php" class="nav-link  pb-0 ">Wordle Peliculas </a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -110,7 +111,7 @@
     <div class="container">
         <div class="movie-details">
             <h1 class="textoinfo text-center justify-content-center">Detalles de la película</h1>
-            <div class="row">
+            <div class="row justify-content-center align-items-center">
                 <div class="col-md-4">
                     <img id="movie-poster" src="" alt="Movie Poster" class="img-fluid rounded mb-3 mx-auto d-block">
                 </div>
@@ -123,10 +124,8 @@
                 </div>
             </div>
         </div>
-        
-        
     </div>
-
+    
     <script>
         // Obtiene el ID de la película de la URL
         const urlParams = new URLSearchParams(window.location.search);
@@ -142,29 +141,37 @@
             .then(data => {
                 const movie = data;
     
-                // Actualiza los elementos HTML con los detalles de la película
-                const moviePosterElement = document.getElementById('movie-poster');
-                moviePosterElement.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-                moviePosterElement.alt = movie.title;
+                // Verifica si la película tiene una imagen válida
+                if (movie.poster_path && movie.poster_path !== "null") {
+                    // Actualiza los elementos HTML con los detalles de la película
+                    const moviePosterElement = document.getElementById('movie-poster');
+                    moviePosterElement.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+                    moviePosterElement.alt = movie.title;
     
-                const movieTitleElement = document.getElementById('titulo-pelicula');
-                movieTitleElement.textContent = movie.title;
+                    const movieTitleElement = document.getElementById('titulo-pelicula');
+                    movieTitleElement.textContent = movie.title;
     
-                const movieOverviewElement = document.getElementById('descripccion-pelicula');
-                movieOverviewElement.textContent = movie.overview;
+                    const movieOverviewElement = document.getElementById('descripccion-pelicula');
+                    movieOverviewElement.textContent = movie.overview;
     
-                const movieReleaseDateElement = document.getElementById('fecha-lanzamiento');
-                movieReleaseDateElement.textContent = `Fecha de lanzamiento: ${movie.release_date}`;
+                    const movieReleaseDateElement = document.getElementById('fecha-lanzamiento');
+                    movieReleaseDateElement.textContent = `Fecha de lanzamiento: ${movie.release_date}`;
     
-                const movieRuntimeElement = document.getElementById('duracion');
-                movieRuntimeElement.textContent = `Duración: ${movie.runtime} minutos`;
+                    const movieRuntimeElement = document.getElementById('duracion');
+                    movieRuntimeElement.textContent = `Duración: ${movie.runtime} minutos`;
     
-                const movieGenresElement = document.getElementById('generos');
-                movieGenresElement.textContent = `Géneros: ${movie.genres.map(genre => genre.name).join(', ')}`;
-    
+                    const movieGenresElement = document.getElementById('generos');
+                    movieGenresElement.textContent = `Géneros: ${movie.genres.map(genre => genre.name).join(', ')}`;
+                } else {
+                    // La película no tiene imagen, puedes mostrar un mensaje o redirigir a una página de error, por ejemplo.
+                    console.log('La película no tiene imagen disponible');
+                }
             })
             .catch(error => console.error(error));
     </script>
+    
+    
+    
     
 </body>
 <footer class="text-center textofooter">

@@ -22,15 +22,16 @@
             <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
                 <ul class="navbar-nav ml-auto">
                     <!-- Megamenu-->
+                    <a class="nav-link" href="registro.php">
+                        <h3>Registrarse</h3>
+                    </a>
                     <a class="nav-link" href="perfil.php">
                         <h3>Perfil</h3>
                     </a>
-                    <a class="nav-link" href="ranking.php">
+                    <a class="nav-link mr-5" href="ranking.php">
                         <h3>Ranking</h3>
                     </a>
-                    <a class="nav-link mr-5" href="registro.php">
-                        <h3>Registrarse</h3>
-                    </a>
+
                     <li class="nav-item dropdown mr-2 megamenu"><a id="megamenu" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">
                             <h5>Juegos</h5>
                         </a>
@@ -53,6 +54,8 @@
                                                     <ul class="list-unstyled">
                                                         <li class="nav-item mt-5"><a href="wordlepeliculas.php" class="nav-link pb-0 ">Películas</a></li>
                                                         <li class="nav-item"><a href="wordlejuegos.php" class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                        <li class="nav-item"><a href="WordleJuegoDificil.php" class="nav-link  pb-0 ">Wordle Videojuegos </a></li>
+                                                        <li class="nav-item"><a href="WordlePeliculaDificil.php" class="nav-link  pb-0 ">Wordle Peliculas </a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -95,192 +98,187 @@
     </header>
 
     <main class="row py-5">
-        <div class="col-md-6 d-flex  d-md-flex justify-content-center">
-            <div class="text-center">
+        <div class="col-md-6 d-flex justify-content-center align-items-center text-center">
+            <div>
                 <h1>GUESS <br> THE <br> COVER</h1>
                 <img src="logo/gtc1.png" class="logo" alt="Logo">
             </div>
         </div>
-        <form method="POST" action="" id="loginregistro" class="col-md-4 ml-3 px-4 py-2">
-            <div>
-                <h2>Registro</h2>
-            </div>
-            <div>
-                <div class="me-3">
-                    <div class="inputGroup mt-2">
-                        <label for="nombre">nombre</label><br>
-                        <input name="nombre" type="text" required id="nombre" class="w-50" minlength="3" maxlength="20" autocomplete="off" placeholder="Nombre">
-                    </div>
-                    <?php
-
-                    ?>
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <form method="POST" action="" id="loginregistro" class="w-90 px-4 py-2">
+                <div>
+                    <h2>Registro</h2>
                 </div>
+                <div>
+                    <div class="me-3">
+                        <div class="inputGroup mt-2">
+                            <label for="nombre">nombre</label><br>
+                            <input name="nombre" type="text" required id="nombre" class="w-50" minlength="3" maxlength="20" autocomplete="off" placeholder="Nombre">
+                        </div>
+                        <?php
 
-                <div class="me-3">
-                    <div class="inputGroup mt-2">
-                        <label for="usuario">Usuario</label><br>
-                        <input type="text" name="usuario" required="" id="usuario" class="w-50" minlength="2" maxlength="20" autocomplete="off" placeholder="Nombre de Usuario">
-
+                        ?>
                     </div>
 
-                    <span class="text-danger" id="errorUsuario"></span>
+                    <div class="me-3">
+                        <div class="inputGroup mt-2">
+                            <label for="usuario">Usuario</label><br>
+                            <input type="text" name="usuario" required="" id="usuario" class="w-50" minlength="2" maxlength="20" autocomplete="off" placeholder="Nombre de Usuario">
+
+                        </div>
+
+                        <span class="text-danger" id="errorUsuario"></span>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="inputGroup mt-2">
-                    <label for="nombre">Email</label><br>
-                    <input type="email" name="email" id="email" class="w-50" placeholder="Email" required>
+                <div>
+                    <div class="inputGroup mt-2">
+                        <label for="nombre">Email</label><br>
+                        <input type="email" name="email" id="email" class="w-50" placeholder="Email" required>
+                    </div>
+
+                    <span class="text-danger" id="errorEmail"></span>
+                </div>
+                <div>
+                    <div class="inputGroup mt-2">
+                        <label for="nombre">Contrasena</label><br>
+
+                        <input type="password" name="contraseña" id="contraseña" class="w-50" placeholder="Contrasena">
+
+                    </div>
+
+                    <span class="text-danger" id="contraseñaErr"></span>
+                </div>
+                <div>
+                    <div class="inputGroup mt-2">
+                        <label for="nombre">Fecha de Nacimiento</label><br>
+                        <input type="date" name="date" id="date" class="w-50" required min="1900-01-01" max="2005-01-10" placeholder="nacimiento">
+                    </div>
+                    <span class="text-danger" id="errorDate"></span>
+                </div>
+                <div class="d-flex justify-content-center ">
+                    <input type="submit" name="bAceptar" value="Registrarse" class=" botonlogin rounded border-0 m-4 px-3 py-2 w-50" id="btn-register">
+                </div>
+                <div class="d-flex justify-content-center ">
+                    <a href="login.php" class=" botonlogin rounded border-0 m-4 px-3 py-2 w-40" style="color: black; ">Iniciar sesión</a>
                 </div>
 
-                <span class="text-danger" id="errorEmail"></span>
-            </div>
-            <div>
-                <div class="inputGroup mt-2">
-                    <label for="nombre">Contrasena</label><br>
-
-                    <input type="password" name="contraseña" id="contraseña" class="w-50" placeholder="Contrasena">
-
-                </div>
-
-                <span class="text-danger" id="contraseñaErr"></span>
-            </div>
-            <div>
-                <div class="inputGroup mt-2">
-                    <label for="nombre">Fecha de Nacimiento</label><br>
-                    <input type="date" name="date" id="date" class="w-50" required min="1900-01-01" max="2005-01-10" placeholder="nacimiento">
-                </div>
-                <span class="text-danger" id="errorDate"></span>
-            </div>
-            <div class="d-flex justify-content-center ">
-                <input type="submit" name="bAceptar" value="Registrarse" class=" botonlogin rounded border-0 m-4 px-3 py-2 w-50" id="btn-register">
-            </div>
-            <div class="d-flex justify-content-center ">
-                <a href="login.php" class=" botonlogin rounded border-0 m-4 px-3 py-2 w-40" style="color: black; ">Iniciar sesión</a>
-            </div>
-            <?php
-            //   $host = 'localhost';
-            //   $dbname = 'guess_the_cover';
-            //   $username = 'root';
-            //   $password = '';
+                <?php
+                //   $host = 'localhost';
+                //   $dbname = 'guess_the_cover';
+                //   $username = 'root';
+                //   $password = '';
 
 
-            //   try {
-            //       $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-            //       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            //   } catch (PDOException $e) {
-            //       die("Error al conectarse a la base de datos: " . $e->getMessage());
-            //   }
-            if (isset($_POST['bAceptar'])) {
-                $nombre = $_POST['nombre'];
-                $usuario = $_POST['usuario'];
-                $email = $_POST['email'];
-                $contrasena = $_POST['contraseña'];
+                //   try {
+                //       $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+                //       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //   } catch (PDOException $e) {
+                //       die("Error al conectarse a la base de datos: " . $e->getMessage());
+                //   }
+                if (isset($_POST['bAceptar'])) {
+                    $nombre = $_POST['nombre'];
+                    $usuario = $_POST['usuario'];
+                    $email = $_POST['email'];
+                    $contrasena = $_POST['contraseña'];
 
-                require_once 'conexionBDRegistro.php';
+                    require_once 'conexionBDRegistro.php';
 
-                $registro = new Registro();
+                    $registro = new Registro();
 
-                $datosValidos = true;
-                if (!$registro->validar_nombre($nombre)) {
-                    echo "<p>El nombre no es válido. Debe contener solo letras y tener una longitud entre 3 y 10 caracteres.</p>";
-                    $datosValidos = false;
+                    $datosValidos = true;
+                    if (!$registro->validar_nombre($nombre)) {
+                        echo "<p>El nombre no es válido. Debe contener solo letras y tener una longitud entre 3 y 10 caracteres.</p>";
+                        $datosValidos = false;
+                    }
+                    if (!$registro->validar_usuario($usuario)) {
+                        echo "<p class='pincorrecto'>El usuario no es válido. Debe contener solo letras y tener una longitud entre 3 y 10 caracteres.</p>";
+                        $datosValidos = false;
+                    }
+                    if (!$registro->validar_contrasena($contrasena)) {
+                        echo "<p class='pincorrecto'>La contraseña no es válida. Debe contener letras, números y símbolos y tener una longitud entre 5 y 10 caracteres.</p>";
+                        $datosValidos = false;
+                    }
+                    if ($datosValidos) {
+                        $registro->insertar_usuario($nombre, $usuario, $email, $contrasena);
+                        echo "<p class='pcorrecto'>Registro realizado. Ya puedes iniciar sesión</p>";
+                    }
                 }
-                if (!$registro->validar_usuario($usuario)) {
-                    echo "<p class='pincorrecto'>El usuario no es válido. Debe contener solo letras y tener una longitud entre 3 y 10 caracteres.</p>";
-                    $datosValidos = false;
-                }
-                if (!$registro->validar_contrasena($contrasena)) {
-                    echo "<p class='pincorrecto'>La contraseña no es válida. Debe contener letras, números y símbolos y tener una longitud entre 5 y 10 caracteres.</p>";
-                    $datosValidos = false;
-                }
-                if ($datosValidos) {
-                    $registro->insertar_usuario($nombre, $usuario, $email, $contrasena);
-                    echo "<p class='pcorrecto'>Registro realizado. Ya puedes iniciar sesión</p>";
-                }
-            }
-            ?>
-            <?php
-            // function validar_nombre_usuario($usuario)
-            // {
-            //     $host = 'localhost';
-            //     $dbname = 'guess_the_cover';
-            //     $username = 'root';
-            //     $password = '';
+                ?>
+                <?php
+                // function validar_nombre_usuario($usuario)
+                // {
+                //     $host = 'localhost';
+                //     $dbname = 'guess_the_cover';
+                //     $username = 'root';
+                //     $password = '';
 
-            //     try {
-            //         $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-            //         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //     try {
+                //         $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+                //         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            //         // Sentencia SQL para buscar un usuario con el nombre de usuario proporcionado
-            //         $sql = "SELECT COUNT(*) FROM usuario WHERE usuario = ?";
+                //         // Sentencia SQL para buscar un usuario con el nombre de usuario proporcionado
+                //         $sql = "SELECT COUNT(*) FROM usuario WHERE usuario = ?";
 
-            //         // Preparar la sentencia SQL para ejecutarla con PDO
-            //         $stmt = $pdo->prepare($sql);
+                //         // Preparar la sentencia SQL para ejecutarla con PDO
+                //         $stmt = $pdo->prepare($sql);
 
-            //         // Asignar el valor del parámetro
-            //         $stmt->bindValue(1, $usuario);
+                //         // Asignar el valor del parámetro
+                //         $stmt->bindValue(1, $usuario);
 
-            //         // Ejecutar la consulta
-            //         $stmt->execute();
+                //         // Ejecutar la consulta
+                //         $stmt->execute();
 
-            //         // Obtener el resultado
-            //         $count = $stmt->fetchColumn();
+                //         // Obtener el resultado
+                //         $count = $stmt->fetchColumn();
 
-            //         // Si el resultado es mayor a 0, significa que el nombre de usuario ya existe
-            //         if ($count > 0) {
-            //             return false;
-            //         } else {
-            //             return true;
-            //         }
-            //     } catch (PDOException $e) {
-            //         die("Error al conectarse a la base de datos: " . $e->getMessage());
-            //     }
-            // }
-            // ?>
-        </form>
+                //         // Si el resultado es mayor a 0, significa que el nombre de usuario ya existe
+                //         if ($count > 0) {
+                //             return false;
+                //         } else {
+                //             return true;
+                //         }
+                //     } catch (PDOException $e) {
+                //         die("Error al conectarse a la base de datos: " . $e->getMessage());
+                //     }
+                // }
+                // 
+                ?>
+            </form>
 
 
 
     </main>
 
     <footer class="text-center textofooter">
-
-        <section class="p-4 bg-navbar">
-
-        </section>
-
-        <section class="">
-            <div class="container text-center text-md-start mt-2">
+        <section>
+            <div class="text-center text-sm-start mt-2">
                 <div class="row mt-4">
-
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
+                    <div class="col-sm-6 col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <h5 class="text-uppercase fw-bold border-bottom border-primary">INFORMACION</h5>
-                        <p> <a href="sobreNosotros.html" class="sinestilo"> Sobre nosotros</a></p>
-                        <p> <a href="politicaPrivacidad.html" class="sinestilo">Politica de Privacidad</a></p>
-                        <p> <a href="contacto.html" class="sinestilo">Contacto</a></p>
+                        <p><a href="sobreNosotros.html" class="sinestilo">Sobre nosotros</a></p>
+                        <p><a href="politicaPrivacidad.html" class="sinestilo">Politica de Privacidad</a></p>
+                        <p><a href="contacto.html" class="sinestilo">Contacto</a></p>
                     </div>
-
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-5 border-end border-start border-dark">
+                    <div class="col-sm-6 d-flex col-md-2 col-lg-2 col-xl-2 mx-auto mb-5 border-end border-start border-dark justify-content-center">
                         <div class="text-center imgfooter">
-                            <h3>GUESS THE COVER</h3>
+                            <h5>GUESS THE COVER</h5>
                             <img src="logo/gtc1.png" class="imgfooter" alt="Logo">
                         </div>
                     </div>
-
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2">
-                        <h5 class="text-uppercase fw-bold border-bottom border-primary">Redes sociales</h5>
-                        <!-- <img src="logo/icons8-tik-tok-94.png" class=" imgtamano3 " alt="tiktok">                           
-                <img src="logo/icons8-instagram-48.png" class=" imgtamano3" alt="instagram">
-                <img src="logo/icons8-facebook-nuevo-48.png" class=" imgtamano3" alt="facebook">
-                <img src="logo/icons8-twitter-48.png" class=" imgtamano3" alt="twitter"> -->
+                    <div class="col-sm-6 col-md-2 col-lg-4 col-xl-3 mx-auto mb-md-0 mb-2">
+                        <h5 class="text-uppercase fw-bold border-bottom border-primary">Redes sociales</h5>                           
+                         <img src="imagenes/icons8-instagram-48.png" class=" imgtamano3" alt="instagram">
+                         <img src="imagenes/icons8-facebook-48.png" class=" imgtamano3" alt="facebook">
+                         <img src="imagenes/icons8-twitter-48.png" class=" imgtamano3" alt="twitter">
+                         <img src="imagenes/reditt-removebg-preview(3).png" class=" imgtamano3" alt="reditt">
                     </div>
                 </div>
-
+            </div>
+            </div>
             </div>
         </section>
-
     </footer>
+
 
 </body>
 

@@ -99,14 +99,14 @@
                 <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
                     <ul class="navbar-nav ml-auto">
                         <!-- Megamenu-->
+                        <a class="nav-link" href="registro.php">
+                            <h3>Registrarse</h3>
+                        </a>
                         <a class="nav-link" href="perfil.php">
                             <h3>Perfil</h3>
                         </a>
-                        <a class="nav-link" href="ranking.php">
+                        <a class="nav-link mr-5" href="ranking.php">
                             <h3>Ranking</h3>
-                        </a>
-                        <a class="nav-link mr-5" href="registro.php">
-                            <h3>Registrarse</h3>
                         </a>
                         <li class="nav-item dropdown mr-2 megamenu"><a id="megamenu" href="" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false"
@@ -132,10 +132,10 @@
                                                     <div class="col-sm-6 col-lg-3 mb-4">
                                                         <h5 class="font-weight-bold text-uppercase">Wordles</h5>
                                                         <ul class="list-unstyled">
-                                                            <li class="nav-item mt-5"><a href="wordlepeliculas.php"
-                                                                    class="nav-link pb-0 ">Películas</a></li>
-                                                            <li class="nav-item"><a href="wordlejuegos.php"
-                                                                    class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                            <li class="nav-item mt-5"><a href="wordlepeliculas.php" class="nav-link pb-0 ">Películas</a></li>
+                                                            <li class="nav-item"><a href="wordlejuegos.php" class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                            <li class="nav-item"><a href="WordleJuegoDificil.php" class="nav-link  pb-0 ">Wordle Videojuegos </a></li>
+                                                            <li class="nav-item"><a href="WordlePeliculaDificil.php" class="nav-link  pb-0 ">Wordle Peliculas </a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -195,10 +195,12 @@
             <h2> Como jugar</h2>
         </div>
         <div class=" tutorial row justify-content-center text-center p-3">
-            <h3> ¡Supera a los demás jugadores e intenta subir a la cima del ranking! Pon a prueba tus habilidades adivinando las
-                 portadas más famosas de videojuegos y películas. Es un juego fácil y
-                 divertido donde debes adivinar el nombre de cada portada sin equivocarte.
-                 Supera tu record para dejar a todos detrás. !Buena Suerte!
+            <h3><strong> ¡Supera a los demás jugadores e intenta subir a la cima del ranking! Pon a prueba tus habilidades
+                adivinando las
+                portadas más famosas de videojuegos y películas. Es un juego fácil y
+                divertido donde debes adivinar el nombre de cada portada sin equivocarte.
+                Supera tu record para dejar a todos detrás. !Buena Suerte!
+            </strong>
             </h3>
         </div>
 
@@ -207,10 +209,11 @@
         </div>
         <main class="row py-5">
 
-            <div class="col-md-4 d-flex  align-items-center justify-content-center order-1">
+            <div class="col-md-4 d-flex col-md-5 align-items-center justify-content-center ">
                 <div class="d-flex flex-column align-items-center justify-content-center mb-3">
                     <div>
-                        <form class="formbuscar mt-5 mb-3 col-auto w-300" id="search-form">
+                        <p class="ml-3">Introduce el nombre del juego</p>
+                        <form class="formbuscar mt-2 mb-3 col-auto w-300" id="search-form">
                             <input type="text" class="no-outline" maxlength="28" id="search" name="name">
 
                         </form>
@@ -222,8 +225,13 @@
 
                 </div>
             </div>
-            <div
-                class="col-md-2 textocomprobacion d-flex flex-column justify-content-center align-items-center order-3">
+            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center ">
+                <div class="contenedorresultados">
+                    <h1 class="text-center">Resultados</h1>
+                    <div id="results"></div>
+                </div>
+            </div>
+            <div class="ml-5 textocomprobacion d-flex flex-column justify-content-center align-items-center ">
                 <div id="mensajeerror">
                 </div>
                 <div id="mensajeacierto">
@@ -243,12 +251,7 @@
                 </div>
 
             </div>
-            <div class="col-md-5 d-flex flex-column align-items-center justify-content-center order-2">
-                <div class="contenedorresultados">
-                    <h1 class="text-center">Resultados</h1>
-                    <div id="results"></div>
-                </div>
-            </div>
+
         </main>
     </body>
 

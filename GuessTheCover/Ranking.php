@@ -35,14 +35,14 @@ $idUsuario = $_SESSION['idUsuario'];
             <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
                 <ul class="navbar-nav ml-auto">
                     <!-- Megamenu-->
+                    <a class="nav-link" href="registro.php">
+                        <h3>Registrarse</h3>
+                    </a>
                     <a class="nav-link" href="perfil.php">
                         <h3>Perfil</h3>
                     </a>
-                    <a class="nav-link" href="ranking.php">
+                    <a class="nav-link mr-5" href="ranking.php">
                         <h3>Ranking</h3>
-                    </a>
-                    <a class="nav-link mr-5" href="registro.php">
-                        <h3>Registrarse</h3>
                     </a>
                     <li class="nav-item dropdown mr-2 megamenu"><a id="megamenu" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">
                             <h5>Juegos</h5>
@@ -66,6 +66,8 @@ $idUsuario = $_SESSION['idUsuario'];
                                                     <ul class="list-unstyled">
                                                         <li class="nav-item mt-5"><a href="wordlepeliculas.php" class="nav-link pb-0 ">Películas</a></li>
                                                         <li class="nav-item"><a href="wordlejuegos.php" class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                        <li class="nav-item"><a href="WordleJuegoDificil.php" class="nav-link  pb-0 ">Wordle Videojuegos </a></li>
+                                                        <li class="nav-item"><a href="WordlePeliculaDificil.php" class="nav-link  pb-0 ">Wordle Peliculas </a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -108,75 +110,46 @@ $idUsuario = $_SESSION['idUsuario'];
     </header>
 
 
-    <main class="row m-5
-        <div class= " col d-flex flex-column align-items-center justify-content-center">
-        <?php
-        function obtenerImagenUsuario($nombreUsuario)
-        {
-            // Aquí debes agregar tu lógica para obtener la URL de la imagen del usuario en base a su nombre de usuario
-            // Puedes realizar una consulta a la base de datos o implementar la lógica que necesites para obtener la URL correcta
+    <main class="row m-5">
+        <div class="col d-flex flex-column align-items-center justify-content-center">
+            <?php
+            function obtenerImagenUsuario($nombreUsuario)
+            {
+                // Tu código para obtener la imagen del usuario
+            }
 
-            // Por ejemplo, supongamos que tienes una tabla "usuario" con una columna "imagen_url" que almacena la URL de la imagen
-            // Puedes usar el siguiente código para obtener la URL de la imagen del usuario específico
+            // Incluir archivo con la conexión a la base de datos
+            require_once "conexionBDRegistro.php";
+
+            // Conectar a la base de datos
             $servername = "localhost";
-            $db_username = "root";
-            $db_password = "";
-            $db_name = "guess_the_cover";
-            $conn = mysqli_connect($servername, $db_username, $db_password, $db_name);
+            $username = "root";
+            $password = "";
+            $dbname = "guess_the_cover";
 
-            if (!$conn) {
-                die("La conexión a la base de datos falló: " . mysqli_connect_error());
+            $conexion = mysqli_connect($servername, $username, $password, $dbname);
+
+            // Verificar si la conexión fue exitosa
+            if (!$conexion) {
+                echo "La conexión a la base de datos falló: " . mysqli_connect_error();
+                exit;
             }
 
-            $select_sql = "SELECT imagen_url FROM usuario WHERE usuario = '$nombreUsuario'";
-            $result = mysqli_query($conn, $select_sql);
+            // Obtener los nombres de usuario y sus puntuaciones más altas
+            $sql = "SELECT u.usuario, MAX(p.puntuacion) AS puntuacion
+                FROM usuario u
+                INNER JOIN puntuacion p ON u.idUsuario = p.idRelacion
+                WHERE p.idJuego = 1 AND u.ban = '0'
+                GROUP BY u.usuario
+                ORDER BY puntuacion DESC";
+            $resultado = mysqli_query($conexion, $sql);
 
-            if (mysqli_num_rows($result) == 1) {
-                $row = mysqli_fetch_assoc($result);
-                $imagen_url = $row["imagen_url"];
-            } else {
-                // En caso de que no se encuentre la imagen del usuario, puedes asignar una imagen por defecto o una URL genérica
-                $imagen_url = './imagenes/foto_usuario_default.png';
-            }
-
-            mysqli_close($conn);
-
-            return $imagen_url;
-        }
-
-        // Incluir archivo con la conexión a la base de datos
-        require_once "conexionBDRegistro.php";
-
-        // Conectar a la base de datos
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "guess_the_cover";
-
-        $conexion = mysqli_connect($servername, $username, $password, $dbname);
-
-        // Verificar si la conexión fue exitosa
-        if (!$conexion) {
-            echo "La conexión a la base de datos falló: " . mysqli_connect_error();
-            exit;
-        }
-
-        // Obtener los nombres de usuario y sus puntuaciones más altas
-        $sql = "SELECT u.usuario, MAX(p.puntuacion) AS puntuacion
-FROM usuario u
-INNER JOIN puntuacion p ON u.idUsuario = p.idRelacion
-WHERE p.idJuego = 1
-GROUP BY u.usuario
-ORDER BY puntuacion DESC";
-        $resultado = mysqli_query($conexion, $sql);
-
-        if ($resultado) {
             if ($resultado) {
                 if (mysqli_num_rows($resultado) > 0) {
                     // Mostrar los nombres de usuario y sus puntuaciones más altas en HTML
-                    echo '<div class="col d-flex flex-column align-items-center justify-content-center order-2">';
+                    echo '<div class="col d-flex flex-column align-items-center justify-content-center">';
                     echo '<div class="contenedorresultados">';
-                    echo '<h1 class="text-center" id="top">TOP PUNTUACIONES DE PELÍCULAS</h1>';
+                    echo '<h1 class="text-center" id="top">TOP PUNTUACIONES DE VIDEOJUEGOS</h1>';
                     echo '<div id="results">';
 
                     $count = 0; // Contador para los tres primeros nombres
@@ -189,9 +162,8 @@ ORDER BY puntuacion DESC";
 
                         echo "<div class='resultado mb-3'>";
 
-
                         if ($count == 0) {
-                            echo "<h3 class='nombre-usuario mt-3 ' style='color: goldenrod;'>$nombreUsuario</h3>";
+                            echo "<h3 class='nombre-usuario mt-3' style='color: goldenrod;'>$nombreUsuario</h3>";
                         } elseif ($count == 1) {
                             echo "<h3 class='nombre-usuario mt-3' style='color: silver;'>$nombreUsuario</h3>";
                         } elseif ($count == 2) {
@@ -199,8 +171,7 @@ ORDER BY puntuacion DESC";
                         } else {
                             echo "<h3 class='nombre-usuario'>$nombreUsuario</h3>";
                         }
-                        echo "<img src='$imagenUsuario' alt='‎' class='imagen-perfil mr-5' style='width: 100px; height: 90px; border-radius: 50%;'>";
-
+                        echo "<img src='../carpetaAvatares/$imagenUsuario' alt='‎' class='imagen-perfil mr-5' style='width: 100px; height: 90px; border-radius: 50%;'>";
 
                         if ($count < 3) {
                             if ($count == 0) {
@@ -227,16 +198,14 @@ ORDER BY puntuacion DESC";
                     echo '</div>';
                 }
             }
-        }
-
-
-
-        // ...
-        ?>
-
-
+            ?>
         </div>
-        </div>
+
+
+
+
+
+
         </div>
         <?php
         // Incluir archivo con la conexión a la base de datos
@@ -258,84 +227,76 @@ ORDER BY puntuacion DESC";
 
         // Obtener los nombres de usuario y sus puntuaciones más altas
         $sql = "SELECT u.usuario, MAX(p.puntuacion) AS puntuacion
-FROM usuario u
-INNER JOIN puntuacion p ON u.idUsuario = p.idRelacion
-WHERE p.idJuego = 2
-GROUP BY u.usuario
-ORDER BY puntuacion DESC";
+        FROM usuario u
+        INNER JOIN puntuacion p ON u.idUsuario = p.idRelacion
+        WHERE p.idJuego = 2 AND u.ban = '0'
+        GROUP BY u.usuario
+        ORDER BY puntuacion DESC";
         $resultado = mysqli_query($conexion, $sql);
 
         if ($resultado) {
-            if ($resultado) {
-                if (mysqli_num_rows($resultado) > 0) {
-                    // Mostrar los nombres de usuario y sus puntuaciones más altas en HTML
-                    echo '<div class="col d-flex flex-column align-items-center justify-content-center order-2">';
-                    echo '<div class="contenedorresultados">';
-                    echo '<h1 class="text-center" id="top">TOP PUNTUACIONES DE PELÍCULAS</h1>';
-                    echo '<div id="results">';
+            if (mysqli_num_rows($resultado) > 0) {
+                // Mostrar los nombres de usuario y sus puntuaciones más altas en HTML
+                echo '<div class="col mt-3 d-flex flex-column align-items-center justify-content-center">';
+                echo '<div class="contenedorresultados">';
+                echo '<h1 class="text-center" id="top">TOP PUNTUACIONES DE PELÍCULAS</h1>';
+                echo '<div id="results">';
 
-                    $count = 0; // Contador para los tres primeros nombres
+                $count = 0; // Contador para los tres primeros nombres
 
-                    while ($row = mysqli_fetch_assoc($resultado)) {
-                        $nombreUsuario = $row["usuario"];
-                        $puntuacion = $row["puntuacion"];
+                while ($row = mysqli_fetch_assoc($resultado)) {
+                    $nombreUsuario = $row["usuario"];
+                    $puntuacion = $row["puntuacion"];
 
-                        $imagenUsuario = obtenerImagenUsuario($nombreUsuario); // Obtener la URL de la imagen de perfil
+                    $imagenUsuario = obtenerImagenUsuario($nombreUsuario); // Obtener la URL de la imagen de perfil
 
-                        echo "<div class='resultado mb-3'>";
+                    echo "<div class='resultado mb-3'>";
 
+                    if ($count == 0) {
+                        echo "<h3 class='nombre-usuario mt-3 ' style='color: goldenrod;'>$nombreUsuario</h3>";
+                    } elseif ($count == 1) {
+                        echo "<h3 class='nombre-usuario mt-3' style='color: silver;'>$nombreUsuario</h3>";
+                    } elseif ($count == 2) {
+                        echo "<h3 class='nombre-usuario mt-3' style='color: #cd7f32;'>$nombreUsuario</h3>";
+                    } else {
+                        echo "<h3 class='nombre-usuario'>$nombreUsuario</h3>";
+                    }
+                    echo "<img src='../carpetaAvatares/$imagenUsuario' alt='‎' class='imagen-perfil mr-5' style='width: 100px; height: 90px; border-radius: 50%;'>";
 
+                    if ($count < 3) {
                         if ($count == 0) {
-                            echo "<h3 class='nombre-usuario mt-3 ' style='color: goldenrod;'>$nombreUsuario</h3>";
+                            echo "<img src='./imagenes/oro.png' alt='Trofeo de oro' class='trophy-img' /><br>";
+                            echo "<br><h3 style='color: goldenrod;'>Puntuación más alta: $puntuacion</h3> <br>";
                         } elseif ($count == 1) {
-                            echo "<h3 class='nombre-usuario mt-3' style='color: silver;'>$nombreUsuario</h3>";
+                            echo "<img src='./imagenes/plata.png' alt='Trofeo de Plata' class='trophy-img'/><br>";
+                            echo "<br><h3 class='mb-3' style='color: silver;'>Puntuación más alta: $puntuacion</h3><br>";
                         } elseif ($count == 2) {
-                            echo "<h3 class='nombre-usuario mt-3' style='color: #cd7f32;'>$nombreUsuario</h3>";
-                        } else {
-                            echo "<h3 class='nombre-usuario'>$nombreUsuario</h3>";
+                            echo "<img src='./imagenes/bronze.png' alt='Trofeo de Bronce' class='trophy-img'/><br>";
+                            echo "<br><h3 style='color: #cd7f32;'>Puntuación más alta: $puntuacion</h3><br>";
                         }
-                        echo "<img src='$imagenUsuario' alt='‎' class='imagen-perfil mr-5' style='width: 100px; height: 90px; border-radius: 50%;'>";
-
-
-                        if ($count < 3) {
-                            if ($count == 0) {
-                                echo "<img src='./imagenes/oro.png' alt='Trofeo de oro' class='trophy-img' /><br>";
-                                echo "<br><h3 style='color: goldenrod;'>Puntuación más alta: $puntuacion</h3> <br>";
-                            } elseif ($count == 1) {
-                                echo "<img src='./imagenes/plata.png' alt='Trofeo de Plata' class='trophy-img'/><br>";
-                                echo "<br><h3 class='mb-3' style='color: silver;'>Puntuación más alta: $puntuacion</h3><br>";
-                            } elseif ($count == 2) {
-                                echo "<img src='./imagenes/bronze.png' alt='Trofeo de Bronce' class='trophy-img'/><br>";
-                                echo "<br><h3 style='color: #cd7f32;'>Puntuación más alta: $puntuacion</h3><br>";
-                            }
-                        } else {
-                            echo "<br><h3 class='mt-3' style='color: rgb(43, 142, 223);'>Puntuación más alta: $puntuacion</h3> <br>";
-                        }
-
-                        echo "</div>";
-
-                        $count++;
+                    } else {
+                        echo "<br><h3 class='mt-3' style='color: rgb(43, 142, 223);'>Puntuación más alta: $puntuacion</h3> <br>";
                     }
 
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
+                    echo "</div>";
+
+                    $count++;
                 }
+
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            } else {
+                echo '<h3>Todavía no hay puntuaciones registradas.</h3>';
             }
         } else {
-            echo '<h3>Todavia no hay puntuaciones registradas.</h3>';
+            echo 'Error al obtener los datos.';
         }
-
-
-        // ...
         ?>
+
     </main>
 
     <footer class="text-center textofooter">
-
-        <section class="p-4 bg-navbar">
-
-        </section>
 
         <section class="">
             <div class="container text-center text-md-start mt-2">

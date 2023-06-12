@@ -34,15 +34,15 @@ if (!isset($_SESSION['username'])) {
                 <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
                     <ul class="navbar-nav ml-auto">
                         <!-- Megamenu-->
-                        <a class="nav-link" href="perfil.php">
-                            <h3>Perfil</h3>
-                        </a>
-                        <a class="nav-link" href="ranking.php">
-                            <h3>Ranking</h3>
-                        </a>
-                        <a class="nav-link mr-5" href="registro.php">
-                            <h3>Registrarse</h3>
-                        </a>
+                        <a class="nav-link" href="registro.php">
+                        <h3>Registrarse</h3>
+                    </a>
+                    <a class="nav-link" href="perfil.php">
+                        <h3>Perfil</h3>
+                    </a>
+                    <a class="nav-link mr-5" href="ranking.php">
+                        <h3>Ranking</h3>
+                    </a>
                         <li class="nav-item dropdown mr-2 megamenu"><a id="megamenu" href="" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false"
                                 class="nav-link dropdown-toggle font-weight-bold text-uppercase">
@@ -67,11 +67,11 @@ if (!isset($_SESSION['username'])) {
                                                     <div class="col-sm-6 col-lg-3 mb-4">
                                                         <h5 class="font-weight-bold text-uppercase">Wordles</h5>
                                                         <ul class="list-unstyled">
-                                                            <li class="nav-item mt-5"><a href="wordlepeliculas.php"
-                                                                    class="nav-link pb-0 ">Películas</a></li>
-                                                            <li class="nav-item"><a href="wordlejuegos.php"
-                                                                    class="nav-link  pb-0 ">Videjuegos </a></li>
-                                                        </ul>
+                                                        <li class="nav-item mt-5"><a href="wordlepeliculas.php" class="nav-link pb-0 ">Películas</a></li>
+                                                        <li class="nav-item"><a href="wordlejuegos.php" class="nav-link  pb-0 ">Videjuegos </a></li>
+                                                        <li class="nav-item"><a href="WordleJuegoDificil.php" class="nav-link  pb-0 ">Wordle Videojuegos </a></li>
+                                                        <li class="nav-item"><a href="WordlePeliculaDificil.php" class="nav-link  pb-0 ">Wordle Peliculas </a></li>
+                                                    </ul>
                                                     </div>
                                                 </div>
                                             </div>
