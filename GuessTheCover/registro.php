@@ -31,7 +31,6 @@
                     <a class="nav-link mr-5" href="ranking.php">
                         <h3>Ranking</h3>
                     </a>
-
                     <li class="nav-item dropdown mr-2 megamenu"><a id="megamenu" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">
                             <h5>Juegos</h5>
                         </a>
@@ -44,51 +43,57 @@
                                                 <div class="col-sm-6 col-lg-3 mr-5 mb-4">
                                                     <h5 class="text-uppercase">Guess The Cover</h5>
                                                     <ul class="list-unstyled">
-                                                        <li class="nav-item"><a href="AdivinaPelicula.php" class="nav-link text-small pb-0">Películas</a></li>
                                                         <li class="nav-item"><a href="AdivinaJuegoFacil.php" class="nav-link text-small pb-0 ">Videjuegos</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-6 col-lg-3 mb-4">
-                                                    <h5 class="font-weight-bold text-uppercase">Wordles</h5>
-                                                    <ul class="list-unstyled">
-                                                        <li class="nav-item mt-5"><a href="wordlepeliculas.php" class="nav-link pb-0 ">Películas</a></li>
-                                                        <li class="nav-item"><a href="wordlejuegos.php" class="nav-link  pb-0 ">Videjuegos </a></li>
-                                                        <li class="nav-item"><a href="WordleJuegoDificil.php" class="nav-link  pb-0 ">Wordle Videojuegos </a></li>
-                                                        <li class="nav-item"><a href="WordlePeliculaDificil.php" class="nav-link  pb-0 ">Wordle Peliculas </a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown megamenu"><a id="megamenu" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">
-                            <h5>Bibliotecas</h5>
-                        </a>
-                        <div aria-labelledby="megamenu" class="dropdown-menu border-0 p-0 m-0">
-                            <div class="container-fluid" style="  background-color: rgba(0, 0, 0, 0.932)">
-                                <div class="row rounded-0 m-0 shadow-sm">
-                                    <div class="col-12">
-                                        <div class="p-4">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-lg-3 mr-5 mb-4">
-                                                    <ul class="list-unstyled">
-                                                        <li class="nav-item"><a href="bibliotecaPeliculas.html" class="nav-link text-small pb-0">Películas</a></li>
-                                                        <li class="nav-item"><a href="bibliotecaJuegos.html" class="nav-link text-small pb-0 ">Videjuegos</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                                        <li class="nav-item"><a href="AdivinaPelicula.php" class="nav-link text-small pb-0">Películas</a></li>
                     </li>
                 </ul>
+            </div>
+            <div class="col-sm-6 col-lg-3 mb-4">
+                <h5 class="font-weight-bold text-uppercase">Wordles</h5>
+                <ul class="list-unstyled">
+                    <li class="nav-itemm"><a href="wordlejuegospanel.php" class="nav-link  pb-0 ">Videjuegos- facil </a></li>
+                    <li class="nav-itemm"><a href="wordlepeliculaspanel.php" class="nav-link pb-0 ">Películas-fácil</a></li>
+                    <li class="nav-itemm"><a href="WordleJuegoDificil.php" class="nav-link  pb-0 ">Videojuegos-difícil </a></li>
+                    <li class="nav-itemm inline-block;"><a href="WordlePeliculaDificil.php" class="nav-link  pb-0 "> Peliculas-difícil </a></li>
+                </ul>
+                <style>
+                    .nav-itemm {
+                        display: inline-block;
+                    }
+                </style>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </li>
+            <li class="nav-item dropdown megamenu"><a id="megamenu" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">
+                    <h5>Bibliotecas</h5>
+                </a>
+                <div aria-labelledby="megamenu" class="dropdown-menu border-0 p-0 m-0">
+                    <div class="container-fluid" style="  background-color: rgba(0, 0, 0, 0.932)">
+                        <div class="row rounded-0 m-0 shadow-sm">
+                            <div class="col-12">
+                                <div class="p-4">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-lg-3 mr-5 mb-4">
+                                            <ul class="list-unstyled">
+                                                <li class="nav-item"><a href="bibliotecaJuegos.html" class="nav-link text-small pb-0 ">Videjuegos</a>
+                                                <li class="nav-item"><a href="bibliotecaPeliculas.html" class="nav-link text-small pb-0">Películas</a></li>
+
+            </li>
+            </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </li>
+            </ul>
             </div>
             <button type="button" style="background-color: transparent;" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler order-md-3">
                 <img src="imagenes/icons8-menú-48.png" alt="Descripción de la imagen">
@@ -194,13 +199,27 @@
                         echo "<p class='pincorrecto'>El usuario no es válido. Debe contener solo letras y tener una longitud entre 3 y 10 caracteres.</p>";
                         $datosValidos = false;
                     }
+                    if (!$registro->validar_correo($email)) {
+                        echo "<p class='pincorrecto'>El correo no es valido.</p>";
+                        $datosValidos = false;
+                    }
                     if (!$registro->validar_contrasena($contrasena)) {
                         echo "<p class='pincorrecto'>La contraseña no es válida. Debe contener letras, números y símbolos y tener una longitud entre 5 y 10 caracteres.</p>";
                         $datosValidos = false;
                     }
+                    if ($registro->usuario_existe($usuario)) {
+                        echo "<p class='pincorrecto'>El nombre de usuario ya está registrado.</p>";
+                        $datosValidos = false;
+                    }
+
+                    if ($registro->correo_existe($email)) {
+                        echo "<p class='pincorrecto'>El correo electrónico ya está registrado.</p>";
+                        $datosValidos = false;
+                    }
+
                     if ($datosValidos) {
                         $registro->insertar_usuario($nombre, $usuario, $email, $contrasena);
-                        echo "<p class='pcorrecto'>Registro realizado. Ya puedes iniciar sesión</p>";
+                        echo "<p class='pcorrecto'>Registro realizado. Ya puedes iniciar sesión.</p>";
                     }
                 }
                 ?>
@@ -250,34 +269,37 @@
     </main>
 
     <footer class="text-center textofooter">
-        <section>
-            <div class="text-center text-sm-start mt-2">
-                <div class="row mt-4">
-                    <div class="col-sm-6 col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                        <h5 class="text-uppercase fw-bold border-bottom border-primary">INFORMACION</h5>
-                        <p><a href="sobreNosotros.html" class="sinestilo">Sobre nosotros</a></p>
-                        <p><a href="politicaPrivacidad.html" class="sinestilo">Politica de Privacidad</a></p>
-                        <p><a href="contacto.html" class="sinestilo">Contacto</a></p>
-                    </div>
-                    <div class="col-sm-6 d-flex col-md-2 col-lg-2 col-xl-2 mx-auto mb-5 border-end border-start border-dark justify-content-center">
-                        <div class="text-center imgfooter">
-                            <h5>GUESS THE COVER</h5>
-                            <img src="logo/gtc1.png" class="imgfooter" alt="Logo">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-2 col-lg-4 col-xl-3 mx-auto mb-md-0 mb-2">
-                        <h5 class="text-uppercase fw-bold border-bottom border-primary">Redes sociales</h5>                           
-                         <img src="imagenes/icons8-instagram-48.png" class=" imgtamano3" alt="instagram">
-                         <img src="imagenes/icons8-facebook-48.png" class=" imgtamano3" alt="facebook">
-                         <img src="imagenes/icons8-twitter-48.png" class=" imgtamano3" alt="twitter">
-                         <img src="imagenes/reditt-removebg-preview(3).png" class=" imgtamano3" alt="reditt">
+    <section>
+        <div class="text-center text-sm-start mt-2">
+            <div class="row mt-4">
+                <div class="col-sm-6 col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h5 class="text-uppercase fw-bold border-bottom border-primary">INFORMACION</h5>
+                    <p><a href="sobreNosotros.html" class="sinestilo">Sobre nosotros</a></p>
+                    <p><a href="politicaPrivacidad.html" class="sinestilo">Politica de Privacidad</a></p>
+                    <p><a href="contacto.html" class="sinestilo">Contacto</a></p>
+                </div>
+                <div class="col-sm-6 d-flex col-md-2 col-lg-2 col-xl-2 mx-auto mb-5 border-end border-start border-dark justify-content-center">
+                    <div class="text-center imgfooter">
+                        <h5>GUESS THE COVER</h5>
+                        <img src="logo/gtc1.png" class="imgfooter" alt="Logo">
                     </div>
                 </div>
+                <div class="col-sm-6 col-md-2 col-lg-4 col-xl-3 mx-auto mb-md-0 mb-2">
+                    <h5 class="text-uppercase fw-bold border-bottom border-primary">Redes sociales</h5>
+                    <a href="https://www.instagram.com/"> <img src="imagenes/icons8-instagram-48.png" class=" imgtamano3" alt="instagram"> </a>
+
+                    <a href="https://www.facebook.com/"> <img src="imagenes/icons8-facebook-48.png" class=" imgtamano3" alt="facebook"> </a>
+
+                    <a href="https://twitter.com/"> <img src="imagenes/icons8-twitter-48.png" class=" imgtamano3" alt="twitter"> </a>
+
+                    <a href="https://www.reddit.com/"> <img src="imagenes/reditt-removebg-preview(3).png" class=" imgtamano3" alt="reditt"> </a>
+                </div>
             </div>
-            </div>
-            </div>
-        </section>
-    </footer>
+        </div>
+        </div>
+        </div>
+    </section>
+</footer>
 
 
 </body>

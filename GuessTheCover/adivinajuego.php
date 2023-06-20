@@ -12,10 +12,10 @@ if (isset($_SESSION["idUsuario"])) {
     exit;
 }
 
-// Llamamos a la función para crear una nueva entrada en la tabla "puntuacion"
-nuevaPartida();
+// Llamamos a la función para iniciar una nueva partida o obtener el registro existente
+obtenerPartida();
 
-function nuevaPartida() {
+function obtenerPartida() {
     // Obtener el idUsuario del usuario logueado desde la sesión
     if (isset($_SESSION["idUsuario"])) {
         $idUsuario = $_SESSION["idUsuario"];
@@ -38,45 +38,19 @@ function nuevaPartida() {
         exit;
     }
 
-    // Verificar si el usuario ya tiene una entrada en la tabla de puntuación
-    $sql = "SELECT * FROM puntuacion WHERE idUsuario = $idUsuario AND idJuego = 1";
+    // Iniciar una nueva partida para el usuario con puntuación inicial de 0
+    $sql = "INSERT INTO puntuacion (idRelacion, puntuacion, idJuego) VALUES ($idUsuario, 0, 1)";
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado) {
-        if (mysqli_num_rows($resultado) > 0) {
-            // El usuario ya tiene una entrada, obtener el número de partida actual
-            $row = mysqli_fetch_assoc($resultado);
-            $partidaActual = $row["partida"];
-            $nuevaPartida = $partidaActual + 1;
-
-            // Insertar una nueva entrada con el número de partida incrementado y puntuación inicial de 1
-            $sql = "INSERT INTO puntuacion (partida, idUsuario, puntuacion, idJuego) VALUES ($nuevaPartida, $idUsuario, 1, 1)";
-            $resultado = mysqli_query($conexion, $sql);
-
-            if ($resultado) {
-                echo "La puntuación ha sido insertada exitosamente";
-            } else {
-                echo "Error al insertar la puntuación: " . mysqli_error($conexion);
-            }
-        } else {
-            // El usuario no tiene una entrada, insertar una nueva entrada con partida 1 y puntuación inicial de 1
-            $sql = "INSERT INTO puntuacion (partida, idUsuario, puntuacion, idJuego) VALUES (1, $idUsuario, 1, 1)";
-            $resultado = mysqli_query($conexion, $sql);
-
-            if ($resultado) {
-                echo "La puntuación ha sido insertada exitosamente";
-            } else {
-                echo "Error al insertar la puntuación: " . mysqli_error($conexion);
-            }
-        }
+        echo "Se ha iniciado una nueva partida";
+        // Guardar la puntuación inicial en la variable de sesión
+        $_SESSION["puntuacion"] = 0;
     } else {
-        echo "Error al obtener la información de puntuación del usuario: " . mysqli_error($conexion);
+        echo "Error al iniciar una nueva partida: " . mysqli_error($conexion);
     }
 
     // Cerrar la conexión a la base de datos
     mysqli_close($conexion);
 }
-
-// Llamamos a la función para crear una nueva partida
-// nuevaPartida();
 ?>

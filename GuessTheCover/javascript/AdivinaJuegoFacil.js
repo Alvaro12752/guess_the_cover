@@ -6,9 +6,10 @@ let nombreJuegoActual = "";
 let juego = document.getElementById("juego");
 
 
-fetch('https://api.rawg.io/api/games?&key=cd721907eaba4ec29085eebb921d5f95&dates=2000-01-01,2023-04-07')
+fetch('https://api.rawg.io/api/games?&key=cd721907eaba4ec29085eebb921d5f95&dates=2000-01-01,2023-04-07&page_size=100')
+
   .then(response => response.json())
-  .then(response => { 
+  .then(response => {
     let resultados = response["results"];
     let juegoAleatorio = resultados[Math.floor(Math.random() * resultados.length)];
     let imagen = juegoAleatorio["background_image"];
@@ -22,28 +23,32 @@ fetch('https://api.rawg.io/api/games?&key=cd721907eaba4ec29085eebb921d5f95&dates
   })
   .catch(err => console.error(err));
 
-  //imagen aleatoria cada vez que el jugador acierta el juego
-  function obtenerJuegoAleatorio() {
-    fetch('https://api.rawg.io/api/games?&key=cd721907eaba4ec29085eebb921d5f95&dates=2000-01-01,2023-04-07')
-      .then(response => response.json())
-      .then(response => { 
-        let resultados = response["results"];
-        let juegoAleatorio = resultados[Math.floor(Math.random() * resultados.length)];
-        let imagen = juegoAleatorio["background_image"];
-        nombreJuegoActual = juegoAleatorio["name"]; // Utilizar la variable global en lugar de declarar una nueva variable
-  
-        let portada = document.createElement('img');
-        portada.src = imagen;
-        portada.alt = nombreJuegoActual;
-        juego.replaceChild(portada, juego.firstElementChild);
-  
-        // Llamar a la función y pasarle el nombre del juego actual
-        mostrarNombreJuegoSiRol2(nombreJuegoActual);
-      })
-      .catch(err => console.error(err));
-  }
-  
-  
+//imagen aleatoria cada vez que el jugador acierta el juego
+function obtenerJuegoAleatorio() {
+  fetch('https://api.rawg.io/api/games?&key=cd721907eaba4ec29085eebb921d5f95&dates=2000-01-01,2023-04-07&page_size=100')
+    .then(response => response.json())
+    .then(response => {
+      let resultados = response["results"];
+      let juegoAleatorio = resultados[Math.floor(Math.random() * resultados.length)];
+      let imagen = juegoAleatorio["background_image"];
+      nombreJuegoActual = juegoAleatorio["name"]; // Utilizar la variable global en lugar de declarar una nueva variable
+
+      let portada = document.createElement('img');
+      portada.src = imagen;
+      portada.alt = nombreJuegoActual;
+      juego.replaceChild(portada, juego.firstElementChild);
+
+      // Llamar a la función y pasarle el nombre del juego actual
+      mostrarNombreJuegoSiRol2(nombreJuegoActual);
+      timeLeft = 90;
+      const timerElement = document.getElementById("timer");
+      timerElement.innerText = timeLeft;
+
+    })
+    .catch(err => console.error(err));
+}
+
+
 // BUSCADOR A TIEMPO REAL 
 const form = document.querySelector('#search-form');
 const resultsSection = document.querySelector('#results');
@@ -62,8 +67,11 @@ function comprobarJuego(juego) {
     document.getElementById("marcador").innerHTML = `<h4 class="acierto"> Marcador: ` + marcador + `</h4><br>`;
     vidas++;
     // Llamar a la función para actualizar la puntuación del usuario
-    actualizarPuntuacionAJAX();
-    obtenerJuegoAleatorio();
+    // actualizarPuntuacionAJAX();
+    acertarJuego();
+    timeLeft = 90;
+    const timerElement = document.getElementById("timer");
+    timerElement.innerText = timeLeft;
 
   } else {
     document.getElementById("mensajeerror").style.display = "block";
@@ -107,7 +115,7 @@ form.search.addEventListener('input', async () => {
   const searchTerm = form.search.value;
 
   // Realiza una solicitud a la API de Rawg.io para buscar juegos
-  const response = await fetch(`https://api.rawg.io/api/games?key=cd721907eaba4ec29085eebb921d5f95&dates=2000-01-01,2023-04-07&search=${searchTerm}`);
+  const response = await fetch(`https://api.rawg.io/api/games?key=cd721907eaba4ec29085eebb921d5f95&dates=2000-01-01,2023-04-07&search=${searchTerm}&page_size=100`);
 
   // Analiza los resultados de la API y muestra los resultados en la página
   const data = await response.json();
@@ -120,7 +128,7 @@ form.search.addEventListener('input', async () => {
       <h4><a class="comprobar-juego">${juego.name}</a></h4>
     `;
     resultsSection.appendChild(juegoElement);
-    
+
     // Añade un event listener a los enlaces creados para comprobar el juego
     const enlace = juegoElement.querySelector('a');
     enlace.addEventListener('click', (e) => {
@@ -139,7 +147,7 @@ function actualizarVidas() {
     ultimaVida.parentNode.removeChild(ultimaVida);
     vidas--;
     if (vidas === 0) {
-      alert('GAME OVER'); 
+      alert('GAME OVER');
 
       location.reload();
     }
@@ -181,37 +189,67 @@ function deleteForm() {
 }
 
 
-// Llamada AJAX para actualizar la puntuación del usuario
-function actualizarPuntuacionAJAX() {
-  // Crear objeto XMLHttpRequest
-  var xhr = new XMLHttpRequest();
+// Llamar a la función para obtener la partida al cargar la página
+window.addEventListener('load', obtenerPartidaAJAX);
 
-  // Configurar la solicitud
-  xhr.open("POST", "./adivinajuego.php", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-  // Enviar la solicitud
-  xhr.send();
-
-  // Manejar la respuesta de la solicitud
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        // La solicitud se completó exitosamente
-        console.log(xhr.responseText);
-      } else {
-        // Ocurrió un error durante la solicitud
-        console.error("Error en la solicitud AJAX");
-      }
-    }
-  };
+// Llamar a la función para aumentar la puntuación al acertar
+function acertarJuego() {
+    aumentarPuntuacionAJAX();
+    obtenerJuegoAleatorio();
 }
 
-// Verificar si la variable nombreImagenJuego está definida
-if (typeof nombreImagenJuego !== 'undefined') {
-  // Mostrar el nombre de la imagen del juego
-  console.log('Nombre de la imagen del juego:', nombreImagenJuego);
+// Llamada AJAX para obtener la partida al cargar la página
+function obtenerPartidaAJAX() {
+    // Crear objeto XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+
+    // Configurar la solicitud
+    xhr.open("GET", "./adivinajuego.php", true);
+
+    // Enviar la solicitud
+    xhr.send();
+
+    // Manejar la respuesta de la solicitud
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // La solicitud se completó exitosamente
+                console.log(xhr.responseText);
+            } else {
+                // Ocurrió un error durante la solicitud
+                console.error("Error en la solicitud AJAX");
+            }
+        }
+    };
 }
+
+// Llamada AJAX para aumentar la puntuación al acertar
+function aumentarPuntuacionAJAX() {
+    // Crear objeto XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+
+    // Configurar la solicitud
+    xhr.open("POST", "./sumarPuntuacion.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // Enviar la solicitud
+    xhr.send();
+
+    // Manejar la respuesta de la solicitud
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // La solicitud se completó exitosamente
+                console.log(xhr.responseText);
+            } else {
+                // Ocurrió un error durante la solicitud
+                console.error("Error en la solicitud AJAX");
+            }
+        }
+    };
+}
+
+
 
 function mostrarNombreJuego() {
 
@@ -227,24 +265,20 @@ function mostrarNombreJuegoSiRol2(nombreJuegoActual) {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "obtenerRol.php", true);
 
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
         var response = JSON.parse(xhr.responseText);
         var rol = response.rol;
         console.log("Rol del usuario:", rol);
         var nombreJuegoActualElement = document.getElementById("nombreJuegoActual");
-        if (nombreJuegoActualElement) {
-          nombreJuegoActualElement.textContent = nombreJuegoActual;
-        }
+
+        if (rol === "2") {
+          nombreJuegoActualElement.innerHTML = "El nombre del juego actual es: <br>" + nombreJuegoActual;
+
+
+          var nombreImagenJuegoElement =  document.getElementById("nombreImagenJuego");
         
-        if (rol === 2) {
-          console.log("Nombre del juego:", nombreJuegoActual); // Agregar este console.log
-          mostrarNombreJuego();
-          var nombreImagenJuegoElement = document.getElementById("nombreImagenJuego");
-          if (nombreImagenJuegoElement) {
-            nombreImagenJuegoElement.textContent = nombreJuegoActual;
-          }
         }
       } else {
         console.error("Error al obtener el rol del usuario. Código de estado: " + xhr.status);
@@ -254,3 +288,4 @@ function mostrarNombreJuegoSiRol2(nombreJuegoActual) {
 
   xhr.send();
 }
+

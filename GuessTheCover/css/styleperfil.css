@@ -172,8 +172,18 @@ h4 {
   text-align: center;
   overflow: scroll;
   scrollbar-width: none;
-  height: 650px;
+  height: 350px;
   /* width: 575px; */
+}
+#resultsranking {
+  color: white;
+  border: 3px solid fuchsia;
+  text-decoration: none;
+  border-radius: 20px;
+  text-align: center;
+  overflow: scroll;
+  scrollbar-width: none;
+  height: 650px;
 }
 
 #imgg {
