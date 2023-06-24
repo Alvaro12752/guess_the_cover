@@ -1,19 +1,6 @@
-<?php
-session_start(); // Inicia la sesión
-
-if (!isset($_SESSION['username'])) {
-    header('Location: login.php');
-    exit();
-}
-
-$nombre_usuario = $_SESSION['username'];
-$idUsuario = $_SESSION['idUsuario'];
-
-?>
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Perfil</title>
     <meta charset="utf-8">
